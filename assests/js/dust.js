@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.isActive = true;
       
       // Hide the cursor
-      this.container.style.cursor = 'none';
+    //   this.container.style.cursor = 'none';
     },
     
     // Handle mouse leaving the container
