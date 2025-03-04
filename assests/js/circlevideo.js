@@ -1,35 +1,50 @@
 document.addEventListener('DOMContentLoaded', function() {
   const video = document.querySelector('.expanding-video');
   const wrapper = document.querySelector('.video-wrapper');
+  
+  // Create play button
+  const playButton = document.createElement('button');
+  playButton.className = 'video-play-button';
+  playButton.innerHTML = '<i class="fas fa-play"></i>';
+  wrapper.appendChild(playButton);
+
+  // Create pause button (initially hidden)
+  const pauseButton = document.createElement('button');
+  pauseButton.className = 'video-pause-button';
+  pauseButton.innerHTML = '<i class="fas fa-pause"></i>';
+  pauseButton.style.display = 'none';
+  wrapper.appendChild(pauseButton);
+
+  // Play button click event
+  playButton.addEventListener('click', function() {
+    video.currentTime = 0; // restart video
+    video.muted = false; // unmute
+    video.play().catch(err => console.error("Play error:", err));
+    playButton.style.display = 'none';
+    pauseButton.style.display = 'block';
+  });
+
+  // Pause button click event
+  pauseButton.addEventListener('click', function() {
+    video.pause();
+    pauseButton.style.display = 'none';
+    playButton.style.display = 'block';
+  });
 
   function updateVideoSize() {
     const rect = wrapper.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
 
-    // Calculate how much of the wrapper is visible
-    const visibleTop = Math.max(0, rect.top);
-    const visibleBottom = Math.min(viewportHeight, rect.bottom);
-    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-    const visibilityPercent = visibleHeight / viewportHeight;
-    
     // Calculate a scroll-based percentage for sizing
     const transitionDistance = viewportHeight;
     let scrollPercent = (transitionDistance - rect.top) / transitionDistance;
     scrollPercent = Math.min(Math.max(scrollPercent, 0), 1);
 
-    // Adjust volume based on visibility
-    video.volume = visibilityPercent;
-    video.muted = visibilityPercent < 0.1;
-
-    // Playback control: play if at least 20% visible; pause if below 10%
-    if (visibilityPercent >= 0.2) {
-      if (video.paused) {
-        video.play().catch(err => console.error("Play error:", err));
-      }
-    } else if (visibilityPercent < 0.1) {
-      if (!video.paused) {
-        video.pause();
-      }
+    // Always ensure the video is playing in muted state,
+    // unless user has clicked the play button
+    if (video.paused && playButton.style.display !== 'none') {
+      video.muted = true;
+      video.play().catch(err => console.error("Play error:", err));
     }
 
     // Adjust video size and shape based on scrollPercent
