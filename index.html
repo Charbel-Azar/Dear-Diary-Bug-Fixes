@@ -933,14 +933,19 @@
           rootMargin: "100px", // Preload videos a bit before they fully enter view.
         };
 
+        const checkIgnore = (entry) => {
+          return (
+            entry.target.classList.contains("before-video") ||
+            entry.target.classList.contains("after-video") ||
+            entry.target.classList.contains("secret-video")
+          );
+        };
+
         // Callback function for the observer.
         const observerCallback = (entries) => {
           entries.forEach((entry) => {
             if (!entry.isIntersecting) {
-              if (
-                entry.target.classList.contains("before-video") ||
-                entry.target.classList.contains("after-video")
-              ) {
+              if (checkIgnore(entry)) {
                 return;
               }
               entry.target.pause();
