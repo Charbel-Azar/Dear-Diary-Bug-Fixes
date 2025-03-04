@@ -23,7 +23,7 @@
 }
 
 /* Legacy Browser Support for Variable Fonts */
-/* For browsers that don’t support variable fonts, you may include additional fallback classes */
+/* For browsers that don't support variable fonts, you may include additional fallback classes */
 .syne-regular {
   font-family: "Syne", serif;
   font-weight: 400;
@@ -973,7 +973,7 @@ Dirty Secret
 }
 
 .flying-key {
-  position: absolute; /* Start absolute so it doesn’t reflow the other keys */
+  position: absolute; /* Start absolute so it doesn't reflow the other keys */
   font-size: 3vh;
   color: #e2cb9f;
   cursor: grab;
@@ -1256,7 +1256,7 @@ Dirty Secret
 
 /* 
   Inner wrapper that actually scales on hover.
-  This keeps the cell’s outer box the same size, 
+  This keeps the cell's outer box the same size, 
   preserving the gap. 
 */
 .video-inner {
@@ -1754,7 +1754,7 @@ Dirty Secret
 
 /* … your existing CSS … */
 
-/* When the envelope is “open” (either by click or because it's centered),
+/* When the envelope is "open" (either by click or because it's centered),
    move the letter up and add a white glow */
 .wrappere .letter.open {
   transform: translateY(-10vh);
@@ -1762,7 +1762,7 @@ Dirty Secret
   transition: transform 0.5s, box-shadow 0.5s;
 }
 
-/* (Retain your hover rules if desired, but mobile devices won’t trigger hover) */
+/* (Retain your hover rules if desired, but mobile devices won't trigger hover) */
 @media (hover: hover) {
   .wrappere:hover .lid.one {
     transform: rotateX(90deg);
@@ -2137,7 +2137,7 @@ Dirty Secret
   /* Reposition navigation and close buttons if needed */
   .close-btn,
   .nav-btn {
-    /* Example: position them relative to the modal’s edges */
+    /* Example: position them relative to the modal's edges */
     position: absolute;
   }
 
@@ -3787,4 +3787,37 @@ Dirty Secret
   .music-controller i {
     font-size: 2.5vh;
   }
+}
+
+/* Video Play/Pause Button Styles */
+.video-play-button,
+.video-pause-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid white;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.video-play-button:hover,
+.video-pause-button:hover {
+  background-color: rgba(
+    226,
+    203,
+    159,
+    0.8
+  ); /* Golden color matching site theme */
+  transform: translate(-50%, -50%) scale(1.1);
 }
