@@ -38,7 +38,7 @@ const questions = [
                 score: { graphic: 2 }
             },
             {
-                text: "Adobe Premiere Pro – Because even my rescue story needs seamless transitions and killer effects.",
+                text: "Adobe Premiere Pro - Because even my rescue story needs seamless transitions and killer effects.",
                 background: "url('./assests/images/questions/videoediting2.jpg')",
                 score: { videoEditor: 2 }
             },
@@ -53,14 +53,14 @@ const questions = [
                 score: { softwareDeveloper: 2 }
             },
             {
-                text: "Instagram – Because if I don’t post it, did I even survive?",
-                background: "url('./assests/images/questions/socailmedia2.jpg')",
+                text: "Instagram - Because if I don't post it, did I even survive?",
+                background: "url('./assests/images/questions/socialmedia2.jpg')",
                 score: { socialMedia: 2 }
             }
         ]
     },
     {
-        question: "How do you know you’ve nailed your work?",
+        question: "How do you know you've nailed your work?",
         options: [
             {
                 text: "When my design looks so good, even Comic Sans is jealous.",
@@ -90,30 +90,30 @@ const questions = [
         ]
     },
     {
-        question: "What’s your creative spirit animal?",
+        question: "What's your creative spirit animal?",
         options: [
             {
-                text: "A chameleon – always adapting colors and styles!",
+                text: "A chameleon - always adapting colors and styles!",
                 background: "url('./assests/images/questions/graphic3.jpg')",
                 score: { graphic: 2 }
             },
             {
-                text: "An eagle – capturing everything from the perfect angle.",
+                text: "An eagle - capturing everything from the perfect angle.",
                 background: "url('./assests/images/questions/videoediting4.jpg')",
                 score: { videoEditor: 2 }
             },
             {
-                text: "A hummingbird – fast, precise, and constantly making cuts.",
+                text: "A hummingbird - fast, precise, and constantly making cuts.",
                 background: "url('./assests/images/questions/photographer3.jpg')",
                 score: { videographer: 2 }
             },
             {
-                text: "An octopus – multi-tasking with a million open tabs.",
+                text: "An octopus - multi-tasking with a million open tabs.",
                 background: "url('./assests/images/questions/webdev4.jpg')",
                 score: { softwareDeveloper: 2 }
             },
             {
-                text: "A parrot – talking, engaging, and keeping the buzz alive!",
+                text: "A parrot - talking, engaging, and keeping the buzz alive!",
                 background: "url('./assests/images/questions/socialmedia4.jpg')",
                 score: { socialMedia: 2 }
             }
@@ -128,7 +128,7 @@ const questions = [
                 score: { graphic: 2 }
             },
             {
-                text: "Editing footage so smoothly that people don’t even notice the jump cuts.",
+                text: "Editing footage so smoothly that people don't even notice the jump cuts.",
                 background: "url('./assests/images/questions/videoediting5.jpg')",
                 score: { videoEditor: 2 }
             },
