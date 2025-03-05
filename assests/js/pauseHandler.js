@@ -11,12 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const checkIgnore = (entry) => {
-    return (
-      entry.target.classList.contains("before-video") ||
-      entry.target.classList.contains("after-video") ||
-      entry.target.classList.contains("secret-video") ||
-      entry.target.classList.contains("hero-video")
-    );
+    // If video is muted, ignore it - let it continue playing or pausing on its own
+    return entry.target.muted;
   };
 
   // Callback function for the observer.
@@ -29,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const isExpandingVideo =
           entry.target.classList.contains("expanding-video");
+        const isHeroVideo = entry.target.classList.contains("hero-video");
 
         if (isExpandingVideo) {
           // Reset the expanding video controls
@@ -36,15 +33,33 @@ document.addEventListener("DOMContentLoaded", () => {
           entry.target.currentTime = 0;
           entry.target.muted = true;
 
-          const expandingPlayButton =
-            document.querySelector(".video-play-button");
+          const expandingPlayButton = document.querySelector(
+            ".video-wrapper .video-play-button"
+          );
           const expandingPauseButton = document.querySelector(
-            ".video-pause-button"
+            ".video-wrapper .video-pause-button"
           );
 
           if (expandingPlayButton && expandingPauseButton) {
             expandingPlayButton.style.display = "block";
             expandingPauseButton.style.display = "none";
+          }
+
+          return;
+        }
+
+        if (isHeroVideo) {
+          // Reset the hero video controls
+          entry.target.pause();
+          entry.target.currentTime = 0;
+          entry.target.muted = true;
+
+          const heroPlayButton = document.querySelector(".hero-play-button");
+          const heroPauseButton = document.querySelector(".hero-pause-button");
+
+          if (heroPlayButton && heroPauseButton) {
+            heroPlayButton.style.display = "block";
+            heroPauseButton.style.display = "none";
           }
 
           return;
@@ -78,4 +93,4 @@ document.addEventListener("DOMContentLoaded", () => {
   videos.forEach((video) => {
     videoObserver.observe(video);
   });
-}); 
+});
