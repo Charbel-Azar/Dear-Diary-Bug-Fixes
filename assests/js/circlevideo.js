@@ -18,8 +18,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Play button click event for expanding video
   playButton.addEventListener("click", function () {
-    expandingVideo.currentTime = 0; // restart video
-    expandingVideo.muted = false; // unmute
+    if (expandingVideo.muted) {
+      expandingVideo.currentTime = 0; // restart video
+      expandingVideo.muted = false; // unmute
+    }
     expandingVideo.play().catch((err) => console.error("Play error:", err));
     playButton.style.display = "none";
     pauseButton.style.display = "block";
@@ -51,8 +53,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Play button click event for hero video
   heroPlayButton.addEventListener("click", function () {
-    heroVideo.currentTime = 0; // restart video
-    heroVideo.muted = false; // unmute
+    if (heroVideo.muted) {
+      heroVideo.currentTime = 0; // restart video
+      heroVideo.muted = false; // unmute
+    }
     heroVideo.play().catch((err) => console.error("Play error:", err));
     heroPlayButton.style.display = "none";
     heroPauseButton.style.display = "block";

@@ -28,8 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isExpandingVideo) {
           // Reset the expanding video controls
           entry.target.pause();
-          entry.target.currentTime = 0;
-          entry.target.muted = true;
 
           const expandingPlayButton = document.querySelector(
             ".video-wrapper .video-play-button"
@@ -49,8 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isHeroVideo) {
           // Reset the hero video controls
           entry.target.pause();
-          entry.target.currentTime = 0;
-          entry.target.muted = true;
 
           const heroPlayButton = document.querySelector(".hero-play-button");
           const heroPauseButton = document.querySelector(".hero-pause-button");
