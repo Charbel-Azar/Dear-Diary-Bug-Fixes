@@ -1357,7 +1357,6 @@ Dirty Secret
   padding: 0 1rem;
 }
 
-
 .comparison-container {
   display: flex;
   flex-direction: column;
@@ -3808,4 +3807,8 @@ Dirty Secret
     0.8
   ); /* Golden color matching site theme */
   transform: translate(-50%, -50%) scale(1.1);
+}
+
+#musicController {
+  z-index: 10000;
 }

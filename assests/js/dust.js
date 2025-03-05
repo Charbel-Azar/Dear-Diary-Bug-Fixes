@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
     particleLifeSpan: 200, // Increased lifespan for more floaty effect
     maxParticles: 100, // Reduced from 150 for smoother performance
     particleInterval: 4, // Reduced frequency (higher number = less frequent)
-    gradientHeight: 80,
+    gradientHeight: 120,
 
     // Internal state
     particles: [],
@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
         top: 0;
         left: 0;
         pointer-events: none;
-        z-index: 10000;
+        z-index: 100;
         width: 100%;
         height: 100%;
         overflow: hidden;
@@ -281,13 +281,13 @@ document.addEventListener("DOMContentLoaded", () => {
       gradientDiv.className = "fairy-dust-gradient";
       gradientDiv.style.cssText = `
         position: absolute;
-        top: 0;
+        top: -30px;
         left: 0;
         width: 100%;
         height: ${this.gradientHeight}px;
         background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
         pointer-events: none;
-        z-index: 10001;
+        z-index: 100;
       `;
 
       // Ensure the container has position relative if it's not already positioned
