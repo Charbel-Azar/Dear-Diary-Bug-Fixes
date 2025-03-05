@@ -1,5 +1,21 @@
 class MusicController {
+  // Static instance property for singleton pattern
+  static instance = null;
+
+  // Static method to get the singleton instance
+  static getInstance(userVolume = 0.5) {
+    if (!MusicController.instance) {
+      MusicController.instance = new MusicController(userVolume);
+    }
+    return MusicController.instance;
+  }
+
   constructor(userVolume = 0.5) {
+    // Prevent multiple instances
+    if (MusicController.instance) {
+      return MusicController.instance;
+    }
+
     this.songs = ["./assests/music/ES_Always by Your Side - House Of Say.mp3"];
 
     // Flags controlling playback
@@ -32,6 +48,9 @@ class MusicController {
     this.controller.classList.add("visible");
 
     this.init();
+
+    // Store the instance
+    MusicController.instance = this;
   }
 
   init() {
@@ -230,7 +249,8 @@ class MusicController {
 }
 
 window.startMusic = function () {
-  new MusicController();
+  // Use getInstance instead of creating a new instance
+  MusicController.getInstance();
 };
 
 /****************************************************
