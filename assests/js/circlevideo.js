@@ -78,13 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let scrollPercent = (transitionDistance - rect.top) / transitionDistance;
     scrollPercent = Math.min(Math.max(scrollPercent, 0), 1);
 
-    // Always ensure the video is playing in muted state,
-    // unless user has clicked the play button
-    if (expandingVideo.paused && playButton.style.display !== "none") {
-      expandingVideo.muted = true;
-      expandingVideo.play().catch((err) => console.error("Play error:", err));
-    }
-
     // Adjust video size and shape based on scrollPercent
     if (scrollPercent === 0) {
       expandingVideo.style.width = "200px";
