@@ -308,8 +308,10 @@ LOADING SCREEN
   height: 4vh; /* Adjust based on your image size */
   transform: translate(-50%, -50%);
   pointer-events: none;
-  z-index: 100000;
+  z-index: 1000000; /* Increased z-index to ensure it's above everything */
   display: none; /* Start hidden */
+  mix-blend-mode: difference;
+  filter: invert(1) drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
 }
 
 .containercamera {
@@ -326,6 +328,7 @@ LOADING SCREEN
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
+  pointer-events: none; /* Ensure video doesn't capture mouse events */
 }
 
 /* Mobile styles: make the container square and let the video fill it */
@@ -440,6 +443,7 @@ LOADING SCREEN
     opacity 1s ease-out;
   z-index: 99999;
   opacity: 1;
+  pointer-events: none; /* Ensure polaroids don't obstruct the crosshair */
 }
 
 .polaroid.show {
@@ -453,12 +457,14 @@ LOADING SCREEN
   background: #333;
   border-radius: 5px;
   overflow: hidden;
+  pointer-events: none; /* Ensure polaroid images don't obstruct the crosshair */
 }
 
 .polaroid-image canvas {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover;
+  pointer-events: none; /* Ensure canvas doesn't obstruct the crosshair */
 }
 
 /* Add no-scroll class */

@@ -252,8 +252,10 @@ window.startMusic = function () {
 
     // Custom crosshair
     const crosshair = document.createElement("img");
-    crosshair.src = "./assests/images/camera/frame.png";
+    crosshair.src = "./assests/images/camera/frame.svg";
     crosshair.className = "custom-crosshair";
+    crosshair.style.pointerEvents = "none"; // Ensure it doesn't interfere with clicks
+    crosshair.style.zIndex = "1000000"; // Ensure high z-index
     document.body.appendChild(crosshair);
     container.style.cursor = "none";
 
@@ -268,6 +270,9 @@ window.startMusic = function () {
         crosshair.style.display = "block";
         crosshair.style.left = `${e.pageX}px`;
         crosshair.style.top = `${e.pageY}px`;
+
+        // Ensure cursor is visible by bringing it to front
+        document.body.appendChild(crosshair); // Re-append to ensure it's the last child
       } else {
         crosshair.style.display = "none";
       }
@@ -309,7 +314,6 @@ window.startMusic = function () {
           //window.scrollTo(0, initialScroll);
           loadingVideo.pause(); // Pause the loading screen video
           crosshair.remove();
-
           // Start background music
           window.startMusic();
         }, 1000);
@@ -322,13 +326,13 @@ window.startMusic = function () {
         endLoadingScreen();
         clearInterval(checkLoadInterval);
       }
-    }, 100);
+    }, 800);
 
     // Fallback: after 15 seconds, end loading screen regardless
     setTimeout(() => {
       endLoadingScreen();
       clearInterval(checkLoadInterval);
-    }, 15000);
+    }, 7000);
 
     // Flash effect
     function triggerFlash() {
@@ -347,6 +351,7 @@ window.startMusic = function () {
       const polaroid = document.createElement("div");
       polaroid.className = "polaroid";
       polaroid.style.zIndex = 99999;
+      polaroid.style.pointerEvents = "none"; // Ensure polaroids don't obstruct the crosshair
 
       const viewportX = x - window.scrollX;
       const viewportY = y - window.scrollY;
@@ -365,7 +370,9 @@ window.startMusic = function () {
 
       const image = document.createElement("div");
       image.className = "polaroid-image";
+      image.style.pointerEvents = "none"; // Ensure image doesn't obstruct the crosshair
       image.appendChild(capturedImage);
+      capturedImage.style.pointerEvents = "none"; // Ensure canvas doesn't obstruct the crosshair
 
       polaroid.appendChild(image);
       document.body.appendChild(polaroid);
