@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Select all video elements except those with the "expanding-video" class
   const videos = document.querySelectorAll("video");
 
-  console.log(videos);
-
   // IntersectionObserver options: adjust these values to control when videos play.
   const observerOptions = {
     threshold: 0.5, // 50% of the video must be visible to trigger play.
