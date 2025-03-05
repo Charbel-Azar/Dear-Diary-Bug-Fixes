@@ -376,11 +376,31 @@ window.startMusic = function () {
 
       setTimeout(() => {
         polaroid.classList.add("fade-out");
-      }, 4000);
 
-      setTimeout(() => {
-        polaroid.remove();
-      }, 5000);
+        // Add a transitionend event listener to ensure the element is only removed
+        // after the transition has fully completed
+        polaroid.addEventListener(
+          "transitionend",
+          function handleTransitionEnd(e) {
+            // Only remove on the opacity transition to avoid removing during other transitions
+            if (e.propertyName === "opacity") {
+              polaroid.removeEventListener(
+                "transitionend",
+                handleTransitionEnd
+              );
+              polaroid.remove();
+            }
+          }
+        );
+
+        // Keep the setTimeout as a fallback in case the transition event doesn't fire
+        // but increase the timeout to ensure it happens after the transition
+        setTimeout(() => {
+          if (polaroid.parentNode) {
+            polaroid.remove();
+          }
+        }, 1500); // Increased from 1000ms to 1500ms for safety
+      }, 4000);
     }
 
     // Capture logic: now capture from loadingVideo (the loading screen video)
