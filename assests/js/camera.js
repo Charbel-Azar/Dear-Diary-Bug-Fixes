@@ -310,7 +310,7 @@ window.startMusic = function () {
     let isFullyLoaded = false;
     let isVideoLoaded = false;
 
-    window.addEventListener("load", function () {
+    window.addEventListener("load", () => {
       isFullyLoaded = true;
     });
 

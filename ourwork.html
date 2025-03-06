@@ -1,307 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tell Stories That Matter" />
-  <meta name="author" content="Dear Diary">
-  <link rel="icon" type="image/ico" href="./assests/images/camera/favicon.ico" />
-  <link rel="stylesheet" href="./assests/css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Syne:wght@400..800&display=swap" rel="stylesheet">
-  <title>Dear Diary</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tell Stories That Matter" />
+    <meta name="author" content="Dear Diary" />
+
+    <!-- DNS Preconnect for external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/ico"
+      href="./assests/images/camera/favicon.ico"
+    />
+
+    <!-- Critical CSS -->
+    <link rel="preload" href="./assests/css/style.css" as="style" />
+    <link rel="stylesheet" href="./assests/css/style.css" />
+
+    <!-- Preload critical fonts -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Syne:wght@400..800&display=swap"
+      as="style"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Preload critical icons -->
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <!-- Preload critical JavaScript -->
+    <link rel="preload" href="./assests/js/main.js" as="script" />
+    <link rel="preload" href="./assests/js/moodboard.js" as="script" />
+
+    <!-- Preload logo images -->
+    <link
+      rel="preload"
+      as="image"
+      href="./assests/images/logo/white_transparent_logo.png"
+    />
+
     <title>Dear Diary</title>
-</head>
-<body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="logo">
-        <a href="index.html">
-          <img src="./assests/images/logo/white_transparent_logo.png" alt="Dear Diary Logo">
-        </a>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <a href="index.html">
+            <img
+              src="./assests/images/logo/white_transparent_logo.png"
+              alt="Dear Diary Logo"
+            />
+          </a>
+        </div>
+
+        <div class="nav-links">
+          <a href="ourstory.html">Our Story</a>
+          <a href="ourwork.html">Our Work</a>
+          <a href="offers.html">Offers</a>
+          <a href="careers.html">Careers</a>
+        </div>
+        <div class="social-links">
+          <a
+            href="https://www.instagram.com/deardiary.media"
+            aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            href="https://www.facebook.com/people/Dear-Diary-Media/61572525600344/"
+            aria-label="Facebook"
+            ><i class="fab fa-facebook"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/company/dear-diary-media/"
+            aria-label="LinkedIn"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a href="https://www.tiktok.com/@deardiary.media" aria-label="TikTok"
+            ><i class="fab fa-tiktok"></i
+          ></a>
+        </div>
+
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+          <div class="menu-circle">
+            <div class="menu-bar"></div>
+            <div class="menu-bar"></div>
+            <div class="menu-bar"></div>
+          </div>
+        </button>
       </div>
-      
-      <div class="nav-links">
-     <a href="ourstory.html">Our Story</a>
-    <a href="ourwork.html">Our Work</a>
-    <a href="offers.html">Offers</a>
-    <a href="careers.html">Careers</a>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+      <div class="mobile-menu-links">
+        <a href="ourstory.html">Our Story</a>
+        <a href="ourwork.html">Our Work</a>
+        <a href="offers.html">Offers</a>
+        <a href="careers.html">Careers</a>
       </div>
-      <div class="social-links">
-        <a href="https://www.instagram.com/deardiary.media" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/people/Dear-Diary-Media/61572525600344/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-       <a href="https://www.linkedin.com/company/dear-diary-media/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.tiktok.com/@deardiary.media" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>    
+      <div class="mobile-social-links">
+        <a
+          href="https://www.instagram.com/deardiary.media"
+          aria-label="Instagram"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a
+          href="https://www.facebook.com/people/Dear-Diary-Media/61572525600344/"
+          aria-label="Facebook"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/company/dear-diary-media/"
+          aria-label="LinkedIn"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a href="https://www.tiktok.com/@deardiary.media" aria-label="TikTok"
+          ><i class="fab fa-tiktok"></i
+        ></a>
+      </div>
+    </div>
+
+    <section id="loading-screen" class="loading-screen-section">
+      <div class="containercamera">
+        <video class="videocamera" autoplay muted loop playsinline>
+          <source
+            src="./assests/images/camera/loading (2).mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="flash"></div>
+      <div class="wave-text">
+        <span style="--i: 0">C</span>
+        <span style="--i: 1">l</span>
+        <span style="--i: 2">i</span>
+        <span style="--i: 3">c</span>
+        <span style="--i: 4">k</span>
+        <span style="--i: 5">&nbsp;</span>
+        <span style="--i: 6">t</span>
+        <span style="--i: 7">o</span>
+        <span style="--i: 8">&nbsp;</span>
+        <span style="--i: 9">t</span>
+        <span style="--i: 10">a</span>
+        <span style="--i: 11">k</span>
+        <span style="--i: 12">e</span>
+        <span style="--i: 13">&nbsp;</span>
+        <span style="--i: 14">a</span>
+        <span style="--i: 15">&nbsp;</span>
+        <span style="--i: 16">p</span>
+        <span style="--i: 17">i</span>
+        <span style="--i: 18">c</span>
+        <span style="--i: 19">t</span>
+        <span style="--i: 20">u</span>
+        <span style="--i: 21">r</span>
+        <span style="--i: 22">e</span>
       </div>
 
-    <button class="mobile-menu-btn" aria-label="Toggle menu">
-      <div class="menu-circle">
-        <div class="menu-bar"></div>
-        <div class="menu-bar"></div>
-        <div class="menu-bar"></div>
-      </div>
-    </button>
-  </div>
-</nav>
+      <button id="skip-button" class="skip-button">Skip</button>
+    </section>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu">
-  <div class="mobile-menu-links">
-    <a href="ourstory.html">Our Story</a>
-    <a href="ourwork.html">Our Work</a>
-    <a href="offers.html">Offers</a>
-    <a href="careers.html">Careers</a>
-  </div>
-   <div class="mobile-social-links">
-    <a href="https://www.instagram.com/deardiary.media" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.facebook.com/people/Dear-Diary-Media/61572525600344/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-   <a href="https://www.linkedin.com/company/dear-diary-media/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://www.tiktok.com/@deardiary.media" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-  </div>
-</div>
-
-<section id="loading-screen" class="loading-screen-section">
-  <div class="containercamera">
-    <video class="videocamera" autoplay muted loop playsinline>
-      <source src="./assests/images/camera/loading (2).mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-  <div class="flash"></div>
-  <div class="wave-text">
-  <span style="--i: 0;">C</span>
-  <span style="--i: 1;">l</span>
-  <span style="--i: 2;">i</span>
-  <span style="--i: 3;">c</span>
-  <span style="--i: 4;">k</span>
-  <span style="--i: 5;">&nbsp;</span>
-  <span style="--i: 6;">t</span>
-  <span style="--i: 7;">o</span>
-  <span style="--i: 8;">&nbsp;</span>
-  <span style="--i: 9;">t</span>
-  <span style="--i: 10;">a</span>
-  <span style="--i: 11;">k</span>
-  <span style="--i: 12;">e</span>
-  <span style="--i: 13;">&nbsp;</span>
-  <span style="--i: 14;">a</span>
-  <span style="--i: 15;">&nbsp;</span>
-  <span style="--i: 16;">p</span>
-  <span style="--i: 17;">i</span>
-  <span style="--i: 18;">c</span>
-  <span style="--i: 19;">t</span>
-  <span style="--i: 20;">u</span>
-  <span style="--i: 21;">r</span>
-  <span style="--i: 22;">e</span>
-</div>
-
-  <button id="skip-button" class="skip-button">Skip</button>
-</section>
-
-  <!-- MAIN WEBSITE CONTENT -->
-  <main id="main-content" class="main-content-section">
-
-    <section style="margin-top: 15vh;">
-      <div class="quote-container">
+    <!-- MAIN WEBSITE CONTENT -->
+    <main id="main-content" class="main-content-section">
+      <section style="margin-top: 15vh">
+        <div class="quote-container">
           <div class="quote-box">
             <h1 class="quote-title"></h1>
             <div class="writing-area">
               <div class="quote-text"></div>
             </div>
           </div>
-      </div>
-  </section>
-  
-
-<section>
-    
-    <div class="workvideos-spacer"></div>
-    <div class="workvideos-container">
-        <!-- First Set -->
-        <section class="workvideos-section">
-            <h2 class="workvideos-title">Want To See What We Can Do?</h2>
-            <p class="workvideos-spacer" style="color: #E2CB9F; text-align: center;">Click To Hear The Rythm</p>
-            <div class="workvideos-sticky">
-                <div class="workvideos-pair">
-                    <div class="workvideos-card workvideos-card-left">
-                        <div class="workvideos-video-wrapper">
-                            <video class="workvideos-video" loop muted playsinline>
-                                <source src="./assests/images/ourwork/fb (1).mp4" type="video/mp4">
-                            </video>
-                        </div>
-                    </div>
-                    <div class="workvideos-text">Food and Beverages</div>
-                    <div class="workvideos-card workvideos-card-right">
-                        <div class="workvideos-video-wrapper">
-                            <video class="workvideos-video" loop muted playsinline>
-                                <source src="./assests/images/ourwork/fb (2).mp4" type="video/mp4">
-                            </video>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Second Set -->
-        <section class="workvideos-section">
-            <div class="workvideos-sticky">
-                <div class="workvideos-pair">
-                    <div class="workvideos-card workvideos-card-left">
-                        <div class="workvideos-video-wrapper">
-                            <video class="workvideos-video" loop muted playsinline>
-                                <source src="./assests/images/ourwork/Fashion (1).mp4" type="video/mp4">
-                            </video>
-                        </div>
-                    </div>
-                    <div class="workvideos-text">Fashion and Beauty</div>
-                    <div class="workvideos-card workvideos-card-right">
-                        <div class="workvideos-video-wrapper">
-                            <video class="workvideos-video" loop muted playsinline>
-                                <source src="./assests/images/ourwork/Fashion (2).mp4" type="video/mp4">
-                            </video>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="workvideos-section">
-          <div class="workvideos-sticky">
-              <div class="workvideos-pair">
-                  <div class="workvideos-card workvideos-card-left">
-                      <div class="workvideos-video-wrapper">
-                          <video class="workvideos-video" loop muted playsinline>
-                              <source src="./assests/images/ourwork/tech (1).mp4" type="video/mp4">
-                          </video>
-                      </div>
-                  </div>
-                  <div class="workvideos-text">Technology</div>
-                  <div class="workvideos-card workvideos-card-right">
-                      <div class="workvideos-video-wrapper">
-                          <video class="workvideos-video" loop muted playsinline>
-                              <source src="./assests/images/ourwork/tech (2).mp4" type="video/mp4">
-                          </video>
-                      </div>
-                  </div>
-              </div>
-          </div>
+        </div>
       </section>
-        <section class="workvideos-section">
+
+      <section>
+        <div class="workvideos-spacer"></div>
+        <div class="workvideos-container">
+          <!-- First Set -->
+          <section class="workvideos-section">
+            <h2 class="workvideos-title">Want To See What We Can Do?</h2>
+            <p
+              class="workvideos-spacer"
+              style="color: #e2cb9f; text-align: center"
+            >
+              Click To Hear The Rythm
+            </p>
             <div class="workvideos-sticky">
-                <div class="workvideos-pair">
-                    <div class="workvideos-card workvideos-card-left">
-                        <div class="workvideos-video-wrapper">
-                            <video class="workvideos-video" loop muted playsinline>
-                                <source src="./assests/images/ourwork/pro (2).mp4" type="video/mp4">
-                            </video>
-                        </div>
-                    </div>
-                    <div class="workvideos-text">Product Promotions</div>
-                    <div class="workvideos-card workvideos-card-right">
-                        <div class="workvideos-video-wrapper">
-                            <video class="workvideos-video" loop muted playsinline>
-                                <source src="./assests/images/ourwork/pro (1).mp4" type="video/mp4">
-                            </video>
-                        </div>
-                    </div>
+              <div class="workvideos-pair">
+                <div class="workvideos-card workvideos-card-left">
+                  <div class="workvideos-video-wrapper">
+                    <video class="workvideos-video" loop muted playsinline>
+                      <source
+                        src="./assests/images/ourwork/fb (1).mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
                 </div>
+                <div class="workvideos-text">Food and Beverages</div>
+                <div class="workvideos-card workvideos-card-right">
+                  <div class="workvideos-video-wrapper">
+                    <video class="workvideos-video" loop muted playsinline>
+                      <source
+                        src="./assests/images/ourwork/fb (2).mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
             </div>
-        </section>
+          </section>
 
-    </div>
-    <div class="workvideos-spacer"></div>
+          <!-- Second Set -->
+          <section class="workvideos-section">
+            <div class="workvideos-sticky">
+              <div class="workvideos-pair">
+                <div class="workvideos-card workvideos-card-left">
+                  <div class="workvideos-video-wrapper">
+                    <video class="workvideos-video" loop muted playsinline>
+                      <source
+                        src="./assests/images/ourwork/Fashion (1).mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+                <div class="workvideos-text">Fashion and Beauty</div>
+                <div class="workvideos-card workvideos-card-right">
+                  <div class="workvideos-video-wrapper">
+                    <video class="workvideos-video" loop muted playsinline>
+                      <source
+                        src="./assests/images/ourwork/Fashion (2).mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-</section>
-<button id="musicController" class="music-controller" aria-label="Music Controls">
-  <div class="control-half volume-half">
-    <i class="fas fa-volume-mute"></i>
-  </div>
-  <div class="control-half next-half">
-    <i class="fas fa-forward"></i>
-  </div>
-</button>
-<footer class="footer-container">
-  <div class="footer-message">
-    You could be our next success story <br>You're only one meeting away
-  </div>
-    <div style="text-align: center;">
-      <a href="https://wa.me/96171293786?text=Hey%21" target="_blank" class="cta-button" style="margin-bottom: 5vh;">Book a Meeting!</a>
-  </div>
-  <div class="footer-bottom">
-   <div class="socialf-links">
-    <a href="https://www.instagram.com/deardiary.media">Instagram</a>
-    <a href="https://www.facebook.com/people/Dear-Diary-Media/61572525600344/">Facebook</a>
-    <a href="https://www.linkedin.com/company/dear-diary-media/">LinkedIn</a>
-    <a href="https://www.tiktok.com/@deardiary.media">TikTok</a>
-</div>
+          <section class="workvideos-section">
+            <div class="workvideos-sticky">
+              <div class="workvideos-pair">
+                <div class="workvideos-card workvideos-card-left">
+                  <div class="workvideos-video-wrapper">
+                    <video class="workvideos-video" loop muted playsinline>
+                      <source
+                        src="./assests/images/ourwork/tech (1).mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+                <div class="workvideos-text">Technology</div>
+                <div class="workvideos-card workvideos-card-right">
+                  <div class="workvideos-video-wrapper">
+                    <video class="workvideos-video" loop muted playsinline>
+                      <source
+                        src="./assests/images/ourwork/tech (2).mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="workvideos-section">
+            <div class="workvideos-sticky">
+              <div class="workvideos-pair">
+                <div class="workvideos-card workvideos-card-left">
+                  <div class="workvideos-video-wrapper">
+                    <video class="workvideos-video" loop muted playsinline>
+                      <source
+                        src="./assests/images/ourwork/pro (2).mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+                <div class="workvideos-text">Product Promotions</div>
+                <div class="workvideos-card workvideos-card-right">
+                  <div class="workvideos-video-wrapper">
+                    <video class="workvideos-video" loop muted playsinline>
+                      <source
+                        src="./assests/images/ourwork/pro (1).mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="workvideos-spacer"></div>
+      </section>
+      <button
+        id="musicController"
+        class="music-controller"
+        aria-label="Music Controls"
+      >
+        <div class="control-half volume-half">
+          <i class="fas fa-volume-mute"></i>
+        </div>
+        <div class="control-half next-half">
+          <i class="fas fa-forward"></i>
+        </div>
+      </button>
+      <footer class="footer-container">
+        <div class="footer-message">
+          You could be our next success story <br />You're only one meeting away
+        </div>
+        <div style="text-align: center">
+          <a
+            href="https://wa.me/96171293786?text=Hey%21"
+            target="_blank"
+            class="cta-button"
+            style="margin-bottom: 5vh"
+            >Book a Meeting!</a
+          >
+        </div>
+        <div class="footer-bottom">
+          <div class="socialf-links">
+            <a href="https://www.instagram.com/deardiary.media">Instagram</a>
+            <a
+              href="https://www.facebook.com/people/Dear-Diary-Media/61572525600344/"
+              >Facebook</a
+            >
+            <a href="https://www.linkedin.com/company/dear-diary-media/"
+              >LinkedIn</a
+            >
+            <a href="https://www.tiktok.com/@deardiary.media">TikTok</a>
+          </div>
 
-     <div class="copyright">
-          © 2024 DearDiary
-      </div>
-      <div class="contact-info">
-        <p><a href="https://g.co/kgs/cCJ9SnF" target="_blank">BDD, Bechara El Khoury, Beirut, Lebanon</a></p>
-        <p><a href="mailto:info@deardiary.media" style=" animation: flicker 1.2s infinite alternate; color: #E2CB9F;">info@deardiary.media  </a></p>
-    </div>
-  </div>
-</footer>
-  </main>
+          <div class="copyright">© 2024 DearDiary</div>
+          <div class="contact-info">
+            <p>
+              <a href="https://g.co/kgs/cCJ9SnF" target="_blank"
+                >BDD, Bechara El Khoury, Beirut, Lebanon</a
+              >
+            </p>
+            <p>
+              <a
+                href="mailto:info@deardiary.media"
+                style="
+                  animation: flicker 1.2s infinite alternate;
+                  color: #e2cb9f;
+                "
+                >info@deardiary.media
+              </a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </main>
 
-  <!-- SCRIPTS -->
- 
-  <script src="./assests/js/camera.js"></script>
-  <script src="./assests/js/splitvideos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="./assests/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Increased LETTER_DELAY from 0.1 to 0.2
-    // 1) Lowered LETTER_DELAY to 0.05 (was 0.2)
-    const LETTER_DELAY = 0.05;
-    // 2) Reduced RANDOM_VARIANCE to 0.02 (smaller random delay)
-    const RANDOM_VARIANCE = 0.02;
-    // 3) Reduced START_DELAY if you want the text to start immediately (or nearly so).
-    const START_DELAY = 0.5;
+    <!-- SCRIPTS -->
 
-    const textEl = document.querySelector('.quote-text');
-    let currentIndex = -1;
+    <script src="./assests/js/camera.js"></script>
+    <script src="./assests/js/splitvideos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="./assests/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Increased LETTER_DELAY from 0.1 to 0.2
+        // 1) Lowered LETTER_DELAY to 0.05 (was 0.2)
+        const LETTER_DELAY = 0.05;
+        // 2) Reduced RANDOM_VARIANCE to 0.02 (smaller random delay)
+        const RANDOM_VARIANCE = 0.02;
+        // 3) Reduced START_DELAY if you want the text to start immediately (or nearly so).
+        const START_DELAY = 0.5;
 
-    function createSparklesAt(lastSpan) {
-        const spanRect = lastSpan.getBoundingClientRect();
-        const containerRect = textEl.getBoundingClientRect();
-        const x = spanRect.left - containerRect.left + spanRect.width / 2;
-        const y = spanRect.top - containerRect.top + spanRect.height / 2;
-        
-        const sparkleCount = 5;
-        for (let i = 0; i < sparkleCount; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.classList.add('sparkle');
+        const textEl = document.querySelector(".quote-text");
+        let currentIndex = -1;
+
+        function createSparklesAt(lastSpan) {
+          const spanRect = lastSpan.getBoundingClientRect();
+          const containerRect = textEl.getBoundingClientRect();
+          const x = spanRect.left - containerRect.left + spanRect.width / 2;
+          const y = spanRect.top - containerRect.top + spanRect.height / 2;
+
+          const sparkleCount = 5;
+          for (let i = 0; i < sparkleCount; i++) {
+            const sparkle = document.createElement("div");
+            sparkle.classList.add("sparkle");
             sparkle.style.left = `${x}px`;
             sparkle.style.top = `${y}px`;
             textEl.appendChild(sparkle);
-            
+
             const angle = Math.random() * Math.PI * 2;
             const distance = 20 + Math.random() * 20;
             const targetX = Math.cos(angle) * distance;
             const targetY = Math.sin(angle) * distance;
-            
-            gsap.to(sparkle, {
-                duration: 1,
-                x: targetX,
-                y: targetY,
-                opacity: 0,
-                scale: 1.5,
-                ease: "power1.out",
-                onComplete: () => sparkle.remove()
-            });
-        }
-    }
 
-    function startDiaryEntries() {
-      const quotes = [
+            gsap.to(sparkle, {
+              duration: 1,
+              x: targetX,
+              y: targetY,
+              opacity: 0,
+              scale: 1.5,
+              ease: "power1.out",
+              onComplete: () => sparkle.remove(),
+            });
+          }
+        }
+
+        function startDiaryEntries() {
+          const quotes = [
             "Dear Diary, Today, we met a logo so bad, it made Comic Sans look professional. We fixed it.",
             "Dear Diary, Someone asked if we could turn their cat into a brand mascot. Challenge accepted.",
             "Dear Diary, A client said, “We want to go viral.” We said, “Hold our coffee.”",
@@ -349,92 +475,96 @@ document.addEventListener("DOMContentLoaded", function() {
             "Dear Diary, Today, we gave a brand so much personality, it practically started talking back.",
             "Dear Diary, A client said, “Our marketing is fine as it is.” Spoiler: It wasn’t. Now, it’s spectacular.",
             "Dear Diary, Today, we rebranded a company that thought beige was edgy. Now, they’re bold and beautiful.",
-            "Dear Diary, Your brand isn’t shy—it’s just waiting for us to give it confidence."
-        ];
+            "Dear Diary, Your brand isn’t shy—it’s just waiting for us to give it confidence.",
+          ];
 
-        function getRandomQuote() {
+          function getRandomQuote() {
             let newIndex;
             do {
-                newIndex = Math.floor(Math.random() * quotes.length);
+              newIndex = Math.floor(Math.random() * quotes.length);
             } while (newIndex === currentIndex && quotes.length > 1);
             currentIndex = newIndex;
             return quotes[currentIndex];
-        }
+          }
 
-        function typeQuote() {
+          function typeQuote() {
             const quote = getRandomQuote();
-            textEl.innerHTML = '';
-            
+            textEl.innerHTML = "";
+
             // Split the quote into "Dear Diary," and the rest
-            const [_, ...restOfQuote] = quote.split('Dear Diary, ');
-            const dearDiaryChars = 'Dear Diary,'.split('');
-            const restChars = restOfQuote.join('').split('');
-            
+            const [_, ...restOfQuote] = quote.split("Dear Diary, ");
+            const dearDiaryChars = "Dear Diary,".split("");
+            const restChars = restOfQuote.join("").split("");
+
             let lastSpan = null;
 
             // Type "Dear Diary,"
             dearDiaryChars.forEach((char, index) => {
-                const span = document.createElement('span');
-                span.textContent = char;
-                textEl.appendChild(span);
-                
-                gsap.from(span, {
-                  opacity: 0,
-            // 3) Reduced character fade-in duration from 0.1/0.04 to 0.05
-            duration: 0.05, 
-            delay: (index * LETTER_DELAY) + (Math.random() * RANDOM_VARIANCE),
-            ease: "power1.out"
+              const span = document.createElement("span");
+              span.textContent = char;
+              textEl.appendChild(span);
+
+              gsap.from(span, {
+                opacity: 0,
+                // 3) Reduced character fade-in duration from 0.1/0.04 to 0.05
+                duration: 0.05,
+                delay: index * LETTER_DELAY + Math.random() * RANDOM_VARIANCE,
+                ease: "power1.out",
+              });
+
+              if (index === dearDiaryChars.length - 1) {
+                // Add 1 second pause before continuing
+                const pauseDelay = index * LETTER_DELAY + 1;
+
+                // Then type the rest of the quote
+                restChars.forEach((restChar, restIndex) => {
+                  const restSpan = document.createElement("span");
+                  restSpan.textContent = restChar;
+                  textEl.appendChild(restSpan);
+
+                  gsap.from(restSpan, {
+                    opacity: 0,
+                    duration: 0.1,
+                    delay:
+                      pauseDelay +
+                      restIndex * LETTER_DELAY +
+                      Math.random() * RANDOM_VARIANCE,
+                    ease: "power1.out",
+                  });
+
+                  if (restIndex === restChars.length - 1) {
+                    lastSpan = restSpan;
+                  }
                 });
-
-                if (index === dearDiaryChars.length - 1) {
-                    // Add 1 second pause before continuing
-                    const pauseDelay = (index * LETTER_DELAY) + 1;
-                    
-                    // Then type the rest of the quote
-                    restChars.forEach((restChar, restIndex) => {
-                        const restSpan = document.createElement('span');
-                        restSpan.textContent = restChar;
-                        textEl.appendChild(restSpan);
-                        
-                        gsap.from(restSpan, {
-                            opacity: 0,
-                            duration: 0.1,
-                            delay: pauseDelay + (restIndex * LETTER_DELAY) + (Math.random() * RANDOM_VARIANCE),
-                            ease: "power1.out"
-                        });
-
-                        if (restIndex === restChars.length - 1) {
-                            lastSpan = restSpan;
-                        }
-                    });
-                }
+              }
             });
 
             if (lastSpan) {
-                gsap.delayedCall(
-                    (dearDiaryChars.length * LETTER_DELAY) + 1 + (restChars.length * LETTER_DELAY) + 0.1,
-                    () => createSparklesAt(lastSpan)
-                );
+              gsap.delayedCall(
+                dearDiaryChars.length * LETTER_DELAY +
+                  1 +
+                  restChars.length * LETTER_DELAY +
+                  0.1,
+                () => createSparklesAt(lastSpan)
+              );
             }
 
             gsap.to(textEl, {
-                delay: 20,
-                duration: 1,
-                opacity: 0,
-                onComplete: () => {
-                    gsap.set(textEl, { opacity: 1 });
-                    typeQuote();
-                }
+              delay: 20,
+              duration: 1,
+              opacity: 0,
+              onComplete: () => {
+                gsap.set(textEl, { opacity: 1 });
+                typeQuote();
+              },
             });
+          }
+
+          typeQuote();
         }
 
-        typeQuote();
-    }
-
-    setTimeout(startDiaryEntries, START_DELAY * 1000);
-});
-
-  </script>
-  
-</body>
+        setTimeout(startDiaryEntries, START_DELAY * 1000);
+      });
+    </script>
+  </body>
 </html>

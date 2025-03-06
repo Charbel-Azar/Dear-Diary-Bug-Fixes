@@ -5,68 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Tell Stories That Matter" />
     <meta name="author" content="Dear Diary" />
+
+    <!-- DNS Preconnect for external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <!-- Favicon -->
     <link
       rel="icon"
       type="image/ico"
       href="./assests/images/camera/favicon.ico"
     />
+
+    <!-- Critical CSS -->
+    <link rel="preload" href="./assests/css/style.css" as="style" />
     <link rel="stylesheet" href="./assests/css/style.css" />
+
+    <!-- Preload critical fonts -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Syne:wght@400..800&display=swap"
+      as="style"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Preload critical icons -->
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      as="style"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <!-- Preload critical JavaScript -->
+    <link rel="preload" href="./assests/js/main.js" as="script" />
+    <link rel="preload" href="./assests/js/camera.js" as="script" />
+
+    <!-- Preload critical above-the-fold videos -->
     <link
       rel="preload"
       as="video"
       href="assests/images/camera/loading (4).mp4"
+      type="video/mp4"
+      fetchpriority="high"
     />
-    <link rel="preload" as="video" href="assests/images/cube/pint (1).mp4" />
-    <link rel="preload" as="video" href="assests/images/cube/pint (2).mp4" />
-    <link rel="preload" as="video" href="assests/images/cube/pint (3).mp4" />
-    <link rel="preload" as="video" href="assests/images/cube/pint (4).mp4" />
-    <link rel="preload" as="video" href="assests/images/cube/pint (5).mp4" />
-    <link rel="preload" as="video" href="assests/images/cube/pint (6).mp4" />
-    <link rel="preload" as="video" href="assests/images/cube/pint (7).mp4" />
-    <link rel="preload" as="video" href="assests/images/cube/pint (8).mp4" />
-    <link rel="preload" as="video" href="assests/images/cube/pint (9).mp4" />
+    <link
+      rel="preload"
+      as="video"
+      href="./assests/images/camera/intro.mp4"
+      type="video/mp4"
+      fetchpriority="high"
+    />
+
+    <!-- Preload secondary videos that appear later in the page -->
     <link
       rel="preload"
       as="video"
       href="./assests/images/beforeafter/After1.mp4"
+      type="video/mp4"
     />
     <link
       rel="preload"
       as="video"
       href="./assests/images/beforeafter/Before1.mp4"
+      type="video/mp4"
     />
-    <link
-      rel="preload"
-      as="video"
-      href="./assests/images/beforeafter/After2.mp4"
-    />
-    <link
-      rel="preload"
-      as="video"
-      href="./assests/images/beforeafter/Before2.mp4"
-    />
-    <link
-      rel="preload"
-      as="video"
-      href="./assests/images/beforeafter/After3.mp4"
-    />
-    <link
-      rel="preload"
-      as="video"
-      href="./assests/images/beforeafter/Before3.mp4"
-    />
-    <!-- and so on for each video -->
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preload logo images -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Syne:wght@400..800&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="image"
+      href="./assests/images/logo/white_transparent_logo.png"
     />
+    <link
+      rel="preload"
+      as="image"
+      href="./assests/images/logo/black_transparent_logo.png"
+    />
+
     <title>Dear Diary</title>
   </head>
   <body>
@@ -1123,5 +1146,6 @@
     <script src="./assests/js/envelope.js"></script>
     <script src="./assests/js/dust.js"></script>
     <script src="./assests/js/pauseHandler.js"></script>
+    <script src="./assests/js/lazyload.js"></script>
   </body>
 </html>

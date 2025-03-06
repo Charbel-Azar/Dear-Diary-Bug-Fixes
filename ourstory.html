@@ -5,12 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Tell Stories That Matter" />
   <meta name="author" content="Dear Diary">
-  <link rel="icon" type="image/ico" href="./assests/images/camera/favicon.ico" />
-  <link rel="stylesheet" href="./assests/css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  
+  <!-- DNS Preconnect for external resources -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/ico" href="./assests/images/camera/favicon.ico" />
+  
+  <!-- Critical CSS -->
+  <link rel="preload" href="./assests/css/style.css" as="style" />
+  <link rel="stylesheet" href="./assests/css/style.css" />
+  
+  <!-- Preload critical fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Syne:wght@400..800&display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+  
+  <!-- Preload critical icons -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  
+  <!-- Preload critical JavaScript -->
+  <link rel="preload" href="./assests/js/main.js" as="script" />
+  <link rel="preload" href="./assests/js/ourstory.js" as="script" />
+  
+  <!-- Preload logo images -->
+  <link rel="preload" as="image" href="./assests/images/logo/white_transparent_logo.png" />
+  
   <title>Dear Diary</title>
 </head>
 <body>
@@ -170,7 +192,7 @@
 <br><br>
 <section class="text-reveal-section">
   <div class="text-container">
-    <p class="reveal-text" id="revealText">Before Dear Diary Media, we were just four friends who had recently graduated from university, each with promising jobs lined up. Despite this, we all felt there was <span class="highlight">something more</span> waiting for us, a bigger purpose beyond the traditional career path. What set us apart was our <span class="highlight">diverse skillset</span>, especially in <span class="highlight">digital marketing</span>. Rather than letting go of our <span class="highlight">dreams and aspirations</span>, we decided to team up, working on various e-commerce brands and projects. Through persistence and creativity, <span class="highlight">Dear Diary Media</span> was born, our opportunity to replicate the proven strategies we had developed to help online businesses grow. After three years and partnerships with over <span class="highlight">120 local brands</span>, we’ve faced countless challenges, some we never could have anticipated, but we’ve always found innovative ways to overcome them. Looking back, we would make the same choice a hundred times over. It was the <span class="highlight">brave choice</span>, and that’s what our brand stands for today.  </p>
+    <p class="reveal-text" id="revealText">Before Dear Diary Media, we were just four friends who had recently graduated from university, each with promising jobs lined up. Despite this, we all felt there was <span class="highlight">something more</span> waiting for us, a bigger purpose beyond the traditional career path. What set us apart was our <span class="highlight">diverse skillset</span>, especially in <span class="highlight">digital marketing</span>. Rather than letting go of our <span class="highlight">dreams and aspirations</span>, we decided to team up, working on various e-commerce brands and projects. Through persistence and creativity, <span class="highlight">Dear Diary Media</span> was born, our opportunity to replicate the proven strategies we had developed to help online businesses grow. After three years and partnerships with over <span class="highlight">120 local brands</span>, we've faced countless challenges, some we never could have anticipated, but we've always found innovative ways to overcome them. Looking back, we would make the same choice a hundred times over. It was the <span class="highlight">brave choice</span>, and that's what our brand stands for today.  </p>
   </div>
 </section>
 
@@ -409,7 +431,6 @@ Meet The Team
       initAnimation();
     </script>
     
-
- 
+    <script src="./assests/js/lazyload.js"></script>
 </body>
 </html>

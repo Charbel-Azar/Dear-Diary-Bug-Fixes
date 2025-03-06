@@ -5,12 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Tell Stories That Matter" />
   <meta name="author" content="Dear Diary">
-  <link rel="icon" type="image/ico" href="./assests/images/camera/favicon.ico" />
-  <link rel="stylesheet" href="./assests/css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  
+  <!-- DNS Preconnect for external resources -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/ico" href="./assests/images/camera/favicon.ico" />
+  
+  <!-- Critical CSS -->
+  <link rel="preload" href="./assests/css/style.css" as="style" />
+  <link rel="stylesheet" href="./assests/css/style.css" />
+  
+  <!-- Preload critical fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Syne:wght@400..800&display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+  
+  <!-- Preload critical icons -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  
+  <!-- Preload critical JavaScript -->
+  <link rel="preload" href="./assests/js/main.js" as="script" />
+  <link rel="preload" href="./assests/js/services.js" as="script" />
+  <link rel="preload" href="./assests/js/faq.js" as="script" />
+  
+  <!-- Preload logo images -->
+  <link rel="preload" as="image" href="./assests/images/logo/white_transparent_logo.png" />
+  
   <title>Dear Diary</title>
 </head>
 <body>
@@ -288,7 +311,7 @@
     <h3>One-Time Services</h3>
     <ul>
       <li>Photography Day w/ Set Design – Elevate your visuals with pro-shot, perfectly styled photos.</li>
-      <li>Full Branding Package – A deep-dive transformation to define your brand’s identity.</li>
+      <li>Full Branding Package – A deep-dive transformation to define your brand's identity.</li>
       <li>Website + Maintenance – A stunning, high-performing website that grows with your business.</li>
       <li>Market Research &amp; Insights – Unlock opportunities with strategic research and analysis.</li>
       <li>Cinematic Branding Package – A high-end video experience to bring your brand to life.</li>
@@ -351,5 +374,6 @@
   <script src="./assests/js/main.js"></script>
   <script src="./assests/js/services.js"></script>
   <script src="./assests/js/faq.js"></script>
+  <script src="./assests/js/lazyload.js"></script>
 </body>
 </html>
