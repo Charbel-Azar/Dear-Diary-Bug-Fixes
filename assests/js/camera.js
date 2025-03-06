@@ -325,8 +325,8 @@ window.startMusic = function () {
     }
 
     // End loading screen when both page and video are ready
-    function endLoadingScreen() {
-      if (!isVideoLoaded) {
+    function endLoadingScreen(isFallback = false) {
+      if (!isVideoLoaded && !isFallback) {
         console.log("Waiting for loading video to be ready...");
         return;
       }
@@ -355,7 +355,7 @@ window.startMusic = function () {
 
     // Fallback: after 15 seconds, end loading screen regardless
     setTimeout(() => {
-      endLoadingScreen();
+      endLoadingScreen(true);
       clearInterval(checkLoadInterval);
     }, 7000);
 
