@@ -315,9 +315,14 @@ window.startMusic = function () {
     });
 
     // Wait for the loading video to be ready
-    loadingVideo.addEventListener("canplaythrough", () => {
+
+    if (loadingVideo.readyState > 3) {
       isVideoLoaded = true;
-    });
+    } else {
+      loadingVideo.addEventListener("canplaythrough", () => {
+        isVideoLoaded = true;
+      });
+    }
 
     // End loading screen when both page and video are ready
     function endLoadingScreen() {
