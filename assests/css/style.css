@@ -766,7 +766,7 @@ body.no-scroll {
 
 /* Make this large enough that scrolling triggers flips */
 .scroll-spacer {
-  height: 1700vh;
+  height: 800vh;
 }
 
 /* Responsive heading */
