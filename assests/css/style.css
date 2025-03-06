@@ -2929,6 +2929,12 @@ Dirty Secret
   animation: cardFlicker 3s infinite;
   filter: drop-shadow(0 0 20px rgba(226, 203, 159, 0.5));
 }
+.package-card.active:hover {
+  
+  animation: none;
+
+}
+
 
 /* Click Glow (active) for Cards */
 .package-card.active {
@@ -2962,19 +2968,22 @@ Dirty Secret
 }
 
 /* Ads (Purple) Overrides --------------------------------- */
-
-.service-btn[data-service="ads"]:hover {
+.service-btn[data-service="product-ad"]:hover {
   animation: buttonFlickerp 3s infinite;
 }
+/* Disable hover animation when active */
+.service-btn[data-service="product-ad"].active:hover {
+  animation: none;
+}
 
-.service-btn[data-service="ads"].active {
+.service-btn[data-service="product-ad"].active {
   background-color: black;
-  border-color: rgb(255, 0, 255);
-  color: rgb(255, 0, 255);
-  text-shadow: 0 0 7px rgb(255, 0, 255), 0 0 10px rgb(255, 0, 255),
-    0 0 21px rgb(255, 0, 255), 0 0 42px rgb(255, 0, 255);
-  box-shadow: 0 0 7px rgb(255, 0, 255), 0 0 10px rgb(255, 0, 255),
-    0 0 21px rgb(255, 0, 255);
+  border-color: rgb(255,133,137);
+  color: rgb(255,133,137);
+  text-shadow: 0 0 7px rgb(255,133,137), 0 0 10px rgb(255,133,137),
+    0 0 21px rgb(255,133,137), 0 0 42px rgb(255,133,137);
+  box-shadow: 0 0 7px rgb(255,133,137), 0 0 10px rgb(255,133,137),
+    0 0 21px rgb(255,133,137);
 }
 
 @keyframes buttonFlickerp {
@@ -2987,12 +2996,12 @@ Dirty Secret
   80%,
   82%,
   100% {
-    color: rgb(85, 1, 85);
-    border-color: rgb(85, 1, 85);
-    text-shadow: 0 0 7px rgb(85, 1, 85), 0 0 10px rgb(85, 1, 85),
-      0 0 21px rgb(85, 1, 85);
-    box-shadow: 0 0 7px rgb(85, 1, 85), 0 0 10px rgb(85, 1, 85),
-      0 0 21px rgb(85, 1, 85);
+    color: rgb(150,80,82);
+    border-color: rgb(150,80,82);
+    text-shadow: 0 0 7px rgb(150,80,82), 0 0 10px rgb(150,80,82),
+      0 0 21px rgb(150,80,82);
+    box-shadow: 0 0 7px rgb(150,80,82), 0 0 10px rgb(150,80,82),
+      0 0 21px rgb(150,80,82);
   }
   41%,
   43%,
@@ -3005,22 +3014,27 @@ Dirty Secret
   }
 }
 
-/* Package Cards for Ads */
-#ads-packages .package-card {
-  border-color: rgb(85, 1, 85);
+/* Package Cards for Product Ad Packages */
+#product-ad-packages .package-card {
+  border-color: rgb(150,80,82);
 }
 
-#ads-packages .package-card:hover {
+#product-ad-packages .package-card:hover {
   animation: cardFlickerp 3s infinite;
-  filter: drop-shadow(0 0 20px rgba(128, 0, 128, 0.5));
+  filter: drop-shadow(0 0 20px rgba(150,80,82,0.5));
 }
 
-#ads-packages .package-card.active {
-  border-color: rgb(255, 0, 255);
-  text-shadow: 0 0 7px rgb(255, 0, 255), 0 0 10px rgb(255, 0, 255),
-    0 0 21px rgb(255, 0, 255), 0 0 42px rgb(255, 0, 255);
-  box-shadow: 0 0 7px rgb(255, 0, 255), 0 0 10px rgb(255, 0, 255),
-    0 0 21px rgb(255, 0, 255);
+#product-ad-packages .package-card.active:hover {
+  animation: none;
+ 
+}
+
+#product-ad-packages .package-card.active {
+  border-color: rgb(255,133,137);
+  text-shadow: 0 0 7px rgb(255,133,137), 0 0 10px rgb(255,133,137),
+    0 0 21px rgb(255,133,137), 0 0 42px rgb(255,133,137);
+  box-shadow: 0 0 7px rgb(255,133,137), 0 0 10px rgb(255,133,137),
+    0 0 21px rgb(255,133,137);
 }
 
 @keyframes cardFlickerp {
@@ -3033,36 +3047,213 @@ Dirty Secret
   80%,
   82%,
   100% {
-    border-color: rgb(85, 1, 85);
-    box-shadow: 0 0 7px rgb(85, 1, 85), 0 0 10px rgb(85, 1, 85),
-      0 0 21px rgb(85, 1, 85);
+    border-color: rgb(150,80,82);
+    box-shadow: 0 0 7px rgb(150,80,82), 0 0 10px rgb(150,80,82),
+      0 0 21px rgb(150,80,82);
   }
   12%,
   41%,
   43%,
   66% {
-    border-color: rgba(85, 1, 85, 0.3);
+    border-color: rgba(150,80,82,0.3);
     box-shadow: none;
   }
 }
 
-/* Text colors for Ads packages */
-#ads-packages .package-card,
-#ads-packages .package-card h3,
-#ads-packages .package-card ul li {
-  color: rgb(85, 1, 85);
+/* Text colors for Product Ad Packages */
+#product-ad-packages .package-card,
+#product-ad-packages .package-card h3,
+#product-ad-packages .package-card ul li {
+  color: rgb(255, 255, 255);
 }
 
-#ads-packages .package-card ul li::before {
-  color: rgb(85, 1, 85);
+#product-ad-packages .package-card ul li::before {
+  color: rgb(255, 255, 255);
 }
 
-#ads-packages .package-card.active,
-#ads-packages .package-card.active h3,
-#ads-packages .package-card.active ul li,
-#ads-packages .package-card.active ul li::before {
-  color: rgb(255, 0, 255);
+#product-ad-packages .package-card.active,
+#product-ad-packages .package-card.active h3,
+#product-ad-packages .package-card.active ul li,
+#product-ad-packages .package-card.active ul li::before {
+  color: rgb(255, 255, 255);
 }
+/*=========================
+  Product feed
+
+========================= */
+/* Product Feed Packages Overrides --------------------------------- */
+.service-btn[data-service="product"]:hover {
+  animation: buttonFlickerpFeed 3s infinite;
+}
+/* Disable hover animation when active */
+.service-btn[data-service="product"].active:hover {
+  animation: none;
+}
+
+.service-btn[data-service="product"].active {
+  background-color: black;
+  border-color: #ff8f4a;
+  color: #ff8f4a;
+  text-shadow: 0 0 7px #ff8f4a, 0 0 10px #ff8f4a,
+    0 0 21px #ff8f4a, 0 0 42px #ff8f4a;
+  box-shadow: 0 0 7px #ff8f4a, 0 0 10px #ff8f4a,
+    0 0 21px #ff8f4a;
+}
+
+@keyframes buttonFlickerpFeed {
+  0%, 10%, 42%, 44%, 65%, 67%, 80%, 82%, 100% {
+    color: rgb(200,110,50);
+    border-color: rgb(200,110,50);
+    text-shadow: 0 0 7px rgb(200,110,50), 0 0 10px rgb(200,110,50),
+      0 0 21px rgb(200,110,50);
+    box-shadow: 0 0 7px rgb(200,110,50), 0 0 10px rgb(200,110,50),
+      0 0 21px rgb(200,110,50);
+  }
+  41%, 43%, 66%, 81% {
+    color: #808080;
+    border-color: #808080;
+    text-shadow: none;
+    box-shadow: none;
+  }
+}
+
+/* Package Cards for Product Feed Packages */
+#product-packages .package-card {
+  border-color: rgb(200,110,50);
+}
+
+#product-packages .package-card:hover {
+  animation: cardFlickerpFeed 3s infinite;
+  filter: drop-shadow(0 0 20px rgba(200,110,50,0.5));
+}
+
+#product-packages .package-card.active:hover {
+  animation: none;
+}
+
+#product-packages .package-card.active {
+  border-color: #ff8f4a;
+  text-shadow: 0 0 7px #ff8f4a, 0 0 10px #ff8f4a,
+    0 0 21px #ff8f4a, 0 0 42px #ff8f4a;
+  box-shadow: 0 0 7px #ff8f4a, 0 0 10px #ff8f4a,
+    0 0 21px #ff8f4a;
+}
+
+@keyframes cardFlickerpFeed {
+  0%, 10%, 42%, 44%, 65%, 67%, 80%, 82%, 100% {
+    border-color: rgb(200,110,50);
+    box-shadow: 0 0 7px rgb(200,110,50), 0 0 10px rgb(200,110,50),
+      0 0 21px rgb(200,110,50);
+  }
+  12%, 41%, 43%, 66% {
+    border-color: rgba(200,110,50,0.3);
+    box-shadow: none;
+  }
+}
+
+/* Text colors for Product Feed Packages */
+#product-packages .package-card,
+#product-packages .package-card h3,
+#product-packages .package-card ul li {
+  color: rgb(255, 255, 255);
+}
+
+#product-packages .package-card ul li::before {
+  color: rgb(255, 255, 255);
+}
+
+#product-packages .package-card.active,
+#product-packages .package-card.active h3,
+#product-packages .package-card.active ul li,
+#product-packages .package-card.active ul li::before {
+  color: rgb(255, 255, 255);
+}
+
+/*===
+one time
+===*/
+/* One-Time Services Overrides --------------------------------- */
+.service-btn[data-service="one-time"]:hover {
+  animation: buttonFlickerpOneTime 3s infinite;
+}
+
+/* Disable hover animation when active */
+.service-btn[data-service="one-time"].active:hover {
+  animation: none;
+}
+
+.service-btn[data-service="one-time"].active {
+  background-color: black;
+  border-color: #ff4112;
+  color: #ff4112;
+  text-shadow: 0 0 7px #ff4112, 0 0 10px #ff4112, 0 0 21px #ff4112, 0 0 42px #ff4112;
+  box-shadow: 0 0 7px #ff4112, 0 0 10px #ff4112, 0 0 21px #ff4112;
+}
+
+@keyframes buttonFlickerpOneTime {
+  0%, 10%, 42%, 44%, 65%, 67%, 80%, 82%, 100% {
+    color: rgb(200,50,10);
+    border-color: rgb(200,50,10);
+    text-shadow: 0 0 7px rgb(200,50,10), 0 0 10px rgb(200,50,10), 0 0 21px rgb(200,50,10);
+    box-shadow: 0 0 7px rgb(200,50,10), 0 0 10px rgb(200,50,10), 0 0 21px rgb(200,50,10);
+  }
+  41%, 43%, 66%, 81% {
+    color: #808080;
+    border-color: #808080;
+    text-shadow: none;
+    box-shadow: none;
+  }
+}
+
+/* Package Cards for One-Time Services */
+#one-time-packages .package-card {
+  border-color: rgb(200,50,10);
+}
+
+#one-time-packages .package-card:hover {
+  animation: cardFlickerpOneTime 3s infinite;
+  filter: drop-shadow(0 0 20px rgba(200,50,10,0.5));
+}
+
+#one-time-packages .package-card.active:hover {
+  animation: none;
+}
+
+#one-time-packages .package-card.active {
+  border-color: #ff4112;
+  text-shadow: 0 0 7px #ff4112, 0 0 10px #ff4112, 0 0 21px #ff4112, 0 0 42px #ff4112;
+  box-shadow: 0 0 7px #ff4112, 0 0 10px #ff4112, 0 0 21px #ff4112;
+}
+
+@keyframes cardFlickerpOneTime {
+  0%, 10%, 42%, 44%, 65%, 67%, 80%, 82%, 100% {
+    border-color: rgb(200,50,10);
+    box-shadow: 0 0 7px rgb(200,50,10), 0 0 10px rgb(200,50,10), 0 0 21px rgb(200,50,10);
+  }
+  12%, 41%, 43%, 66% {
+    border-color: rgba(200,50,10,0.3);
+    box-shadow: none;
+  }
+}
+
+/* Text Colors for One-Time Services */
+#one-time-packages .package-card,
+#one-time-packages .package-card h3,
+#one-time-packages .package-card ul li {
+  color: #ffffff;
+}
+
+#one-time-packages .package-card ul li::before {
+  color: #ffffff;
+}
+
+#one-time-packages .package-card.active,
+#one-time-packages .package-card.active h3,
+#one-time-packages .package-card.active ul li,
+#one-time-packages .package-card.active ul li::before {
+  color: #ffffff;
+}
+
 
 /* Responsive Design */
 @media (max-width: 1200px) {
