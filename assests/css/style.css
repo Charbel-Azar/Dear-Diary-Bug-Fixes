@@ -239,7 +239,7 @@ NAVIGATION STYLES
   display: flex;
   flex-direction: column;
   justify-content: center; /* Centers links vertically */
-  height: 90%;            /* Takes the full height of the mobile menu */
+  height: 80%;            /* Takes the full height of the mobile menu */
   padding: 0 2rem;         /* Remove top padding */
 }
 
@@ -586,7 +586,6 @@ body.no-scroll {
   display: flex;
   justify-content: center;
   gap: 3vh;
-  padding: 2vh 0;
 }
 
 .mobile-social-links a {

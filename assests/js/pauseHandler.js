@@ -1,49 +1,90 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Helper function to set up video controls
-  function setupVideoControls(video, playButton, pauseButton) {
-    let manualStarted = false;
-    // Start video muted and autoplay
-    video.muted = true;
-    video.play();
+  // Select all video elements except those with the "expanding-video" class
+  const videos = document.querySelectorAll("video");
 
-    // Play button click
-    playButton.addEventListener("click", () => {
-      if (!manualStarted) {
-        // First click: reset and start with sound
-        video.currentTime = 0;
-        video.muted = false;
-        video.play();
-        manualStarted = true;
-      } else if (video.paused) {
-        // Resume from paused point with sound
-        video.muted = false;
-        video.play();
+  // IntersectionObserver options: adjust these values to control when videos play.
+  const observerOptions = {
+    threshold: 0.5, // 50% of the video must be visible to trigger play.
+    rootMargin: "100px", // Preload videos a bit before they fully enter view.
+  };
+
+  const checkIgnore = (entry) => {
+    // If video is muted, ignore it - let it continue playing or pausing on its own
+    return entry.target.muted;
+  };
+
+  // Callback function for the observer.
+  const observerCallback = (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        if (checkIgnore(entry)) {
+          return;
+        }
+
+        const isExpandingVideo =
+          entry.target.classList.contains("expanding-video");
+        const isHeroVideo = entry.target.classList.contains("hero-video");
+
+        if (isExpandingVideo) {
+          // Reset the expanding video controls
+          entry.target.pause();
+
+          const expandingPlayButton = document.querySelector(
+            ".video-wrapper .video-play-button"
+          );
+          const expandingPauseButton = document.querySelector(
+            ".video-wrapper .video-pause-button"
+          );
+
+          if (expandingPlayButton && expandingPauseButton) {
+            expandingPlayButton.style.display = "block";
+            expandingPauseButton.style.display = "none";
+          }
+
+          return;
+        }
+
+        if (isHeroVideo) {
+          // Reset the hero video controls
+          entry.target.pause();
+
+          const heroPlayButton = document.querySelector(".hero-play-button");
+          const heroPauseButton = document.querySelector(".hero-pause-button");
+
+          if (heroPlayButton && heroPauseButton) {
+            heroPlayButton.style.display = "block";
+            heroPauseButton.style.display = "none";
+          }
+
+          return;
+        }
+
+        entry.target.pause();
+
+        const video = entry.target;
+        const cell = video.parentElement;
+
+        const isVideoCell = cell?.classList.contains("video-cell");
+        if (isVideoCell) {
+          video.style.filter = "grayscale(100%)";
+          const playBtn = cell.querySelector(".play-button");
+          const pauseBtn = cell.querySelector(".pause-button");
+
+          playBtn.style.display = "block";
+          pauseBtn.style.display = "none";
+        }
       }
     });
+  };
 
-    // Pause button click
-    pauseButton.addEventListener("click", () => {
-      video.pause();
-    });
-  }
+  // Create the IntersectionObserver instance.
+  const videoObserver = new IntersectionObserver(
+    observerCallback,
+    observerOptions
+  );
 
-  // Set up Hero Video controls
-  const heroVideo = document.querySelector(".hero-video");
-  const heroPlayButton = document.querySelector(".hero-play-button");
-  const heroPauseButton = document.querySelector(".hero-pause-button");
-
-  if (heroVideo && heroPlayButton && heroPauseButton) {
-    setupVideoControls(heroVideo, heroPlayButton, heroPauseButton);
-  }
-
-  // Set up Expanding Video controls
-  const expandingVideo = document.querySelector(".expanding-video");
-  // Assuming the expanding video is inside a container with control buttons:
-  const expandingContainer = document.querySelector(".video-wrapper");
-  const expandingPlayButton = expandingContainer.querySelector(".video-play-button");
-  const expandingPauseButton = expandingContainer.querySelector(".video-pause-button");
-
-  if (expandingVideo && expandingPlayButton && expandingPauseButton) {
-    setupVideoControls(expandingVideo, expandingPlayButton, expandingPauseButton);
-  }
+  // Observe each controlled video.
+  videos.forEach((video) => {
+    videoObserver.observe(video);
+  });
 });
