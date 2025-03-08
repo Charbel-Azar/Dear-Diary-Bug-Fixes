@@ -134,7 +134,8 @@
             mediaElement.src = story.mediaUrl;
             mediaElement.controls = false;
             mediaElement.autoplay = true;
-            mediaElement.loop = true; // <-- Loop the video
+            mediaElement.loop = true; 
+            mediaElement.muted = true; // Mute the video completely
             videoElement = mediaElement;
         } else {
             mediaElement = document.createElement('img');

@@ -220,8 +220,11 @@ NAVIGATION STYLES
 .mobile-menu-links {
   display: flex;
   flex-direction: column;
-  padding: 80px 2rem;
+  justify-content: center; /* Centers links vertically */
+  height: 100%;            /* Takes the full height of the mobile menu */
+  padding: 0 2rem;         /* Remove top padding */
 }
+
 
 .mobile-menu-links a {
   color: #fff;
@@ -1318,7 +1321,7 @@ Dirty Secret
   align-items: center;
   justify-content: center;
   transition: background 0.3s ease;
-  margin-right: 10px; /* if you want a little spacing between buttons */
+
 }
 
 .play-button:hover {
@@ -4080,17 +4083,18 @@ one time
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 2px solid white;
-  color: white;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 2px solid #ffffff3d;
+  color: #ffffff3d;
   font-size: 30px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.3s ease;
+  transition: all 0.3sease;
   z-index: 100;
 }
+
 
 .video-play-button:hover,
 .video-pause-button:hover {
@@ -4098,7 +4102,7 @@ one time
     226,
     203,
     159,
-    0.8
+    0.2
   ); /* Golden color matching site theme */
   transform: translate(-50%, -50%) scale(1.1);
 }
