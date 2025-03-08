@@ -19,8 +19,8 @@ class MusicController {
     this.songs = ["./assests/music/ES_Always by Your Side - House Of Say.mp3"];
 
     // Flags controlling playback
-    this.isMuted = false;
-    this.manualMute = false; // User intent
+    this.isMuted = true;
+    this.manualMute = true; // User intent
     this.controller = document.getElementById("musicController");
     this.volumeHalf = this.controller.querySelector(".volume-half");
     this.nextHalf = this.controller.querySelector(".next-half");
@@ -54,12 +54,14 @@ class MusicController {
   }
 
   init() {
-    if (localStorage.getItem("musicMuted") === "true") {
+    if (localStorage.getItem("musicMuted") === "true" || this.manualMute) {
       this.isMuted = true;
       this.manualMute = true;
       this.updateVolumeIcon();
       // Do not auto-play music if user had it muted
     } else {
+      this.isMuted = false; // Override the default if localStorage says it should be unmuted
+      this.manualMute = false;
       this.audio.muted = true;
       this.audio
         .play()
