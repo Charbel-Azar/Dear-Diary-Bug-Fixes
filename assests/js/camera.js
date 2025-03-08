@@ -357,7 +357,7 @@ window.startMusic = function () {
     setTimeout(() => {
       endLoadingScreen(true);
       clearInterval(checkLoadInterval);
-    }, 7000);
+    }, 30000);
 
     // Flash effect
     function triggerFlash() {

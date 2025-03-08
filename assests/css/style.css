@@ -154,6 +154,11 @@ NAVIGATION STYLES
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
     0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
 }
+.social-links {
+  display: flex;
+  align-items: center; /* This aligns icons vertically within the container */
+}
+
 
 /* Social Links Hover Effect */
 .social-links a {
@@ -170,6 +175,19 @@ NAVIGATION STYLES
     0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
   transform: scale(1.1);
 }
+/* Ensure the image has a smooth transition */
+.social-links a img {
+  transition: all 0.3s ease;
+}
+
+/* On hover, apply a drop-shadow glow effect to the image */
+.social-links a:hover img {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8))
+         drop-shadow(0 0 20px rgba(255, 255, 255, 0.8))
+         drop-shadow(0 0 30px rgba(255, 255, 255, 0.6));
+  transform: scale(1.1);
+}
+
 
 /* Mobile Menu Button */
 .mobile-menu-btn {
@@ -221,7 +239,7 @@ NAVIGATION STYLES
   display: flex;
   flex-direction: column;
   justify-content: center; /* Centers links vertically */
-  height: 100%;            /* Takes the full height of the mobile menu */
+  height: 90%;            /* Takes the full height of the mobile menu */
   padding: 0 2rem;         /* Remove top padding */
 }
 
