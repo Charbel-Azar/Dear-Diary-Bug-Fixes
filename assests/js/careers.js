@@ -26,6 +26,16 @@ const questions = [
                 text: "Creating viral content that makes people stop scrolling and go 'OMG, I NEED to share this!'",
                 background: "url('./assests/images/questions/socialmedia.jpg')",
                 score: { socialMedia: 2 }
+            },
+            {
+                text: "Getting paid to write a love letter between two rival brands who secretly admire each other but can’t admit it.",
+                background: "url('./assests/images/questions/copywriter.jpg')",
+                score: { copywriter: 2 }
+            },
+            {
+                text: "Selling ice to a snowman, but upselling him on a deluxe, hand-scooped, glacier-sourced version.",
+                background: "url('./assests/images/questions/salesman.jpg')",
+                score: { salesman: 2 }
             }
         ]
     },
@@ -56,6 +66,16 @@ const questions = [
                 text: "Instagram - Because if I don't post it, did I even survive?",
                 background: "url('./assests/images/questions/socialmedia2.jpg')",
                 score: { socialMedia: 2 }
+            },
+            {
+                text: "Grammarly—because even in isolation, I refuse to let my SOS messages have typos.",
+                background: "url('./assests/images/questions/copywriter1.jpg')",
+                score: { copywriter: 2 }
+            },
+            {
+                text: "Excel—because even in the wilderness, I need a spreadsheet to track coconut sales and barter conversions.",
+                background: "url('./assests/images/questions/salesman1.jpg')",
+                score: { salesman: 2 }
             }
         ]
     },
@@ -86,6 +106,16 @@ const questions = [
                 text: "When my post gets 100+ shares and a flood of DMs asking for more.",
                 background: "url('./assests/images/questions/socialmedia3.jpg')",
                 score: { socialMedia: 2 }
+            },
+            {
+                text: "When the client reads my copy and gasps, 'This… this is poetry,' and I have to humbly remind them it's just a tagline for a cereal box.",
+                background: "url('./assests/images/questions/copywriter2.jpg')",
+                score: { copywriter: 2 }
+            },
+            {
+                text: "When I hear, 'I only came in for a look, but somehow, I bought the whole package… and I feel great about it.'",
+                background: "url('./assests/images/questions/salesman2.jpg')",
+                score: { salesman: 2 }
             }
         ]
     },
@@ -116,6 +146,16 @@ const questions = [
                 text: "A parrot - talking, engaging, and keeping the buzz alive!",
                 background: "url('./assests/images/questions/socialmedia4.jpg')",
                 score: { socialMedia: 2 }
+            },
+            {
+                text: "A Nightingale — because I take in everything, repeat only the best, and make it sound brilliant.",
+                background: "url('./assests/images/questions/copywriter3.jpg')",
+                score: { copywriter: 2 }
+            },
+            {
+                text: "A fox—clever, charming, and always closing.",
+                background: "url('./assests/images/questions/salesman3.jpg')",
+                score: { salesman: 2 }
             }
         ]
     },
@@ -146,6 +186,16 @@ const questions = [
                 text: "Growing online communities and making 'going viral' an everyday thing.",
                 background: "url('./assests/images/questions/socialmedia5.jpg')",
                 score: { socialMedia: 2 }
+            },
+            {
+                text: "It's a place where I can pour my heart out in words and get paid for it. ",
+                background: "url('./assests/images/questions/copywriter4.jpg')",
+                score: { copywriter: 2 }
+            },
+            {
+                text: "Because selling is storytelling, I want to turn a simple product into an irresistible must-have.",
+                background: "url('./assests/images/questions/salesman4.jpg')",
+                score: { salesman: 2 }
             }
         ]
     }
@@ -177,6 +227,16 @@ const positions = {
         title: "Social Media Manager",
         description: "Engage online communities and drive brand conversations. Ideal for energetic individuals who excel in digital engagement.",
         background: "url('path/to/social-media-position.jpg')"
+    },
+    copywriter: {
+        title: "Copywriter",
+        description: "Craft compelling copy that captivates and persuades audiences. Perfect for creative storytellers with a flair for words.",
+        background: "url('path/to/copywriter-position.jpg')"
+    },
+    salesman: {
+        title: "Salesman",
+        description: "Sell anything with charm and charisma. Ideal for individuals who can turn every pitch into a captivating narrative.",
+        background: "url('path/to/salesman-position.jpg')"
     }
 };
 
@@ -187,7 +247,9 @@ let userScores = {
     videoEditor: 0,
     videographer: 0,
     softwareDeveloper: 0,
-    socialMedia: 0
+    socialMedia: 0,
+    copywriter: 0,
+    salesman: 0
 };
 
 // Show question and handle background images
@@ -214,7 +276,6 @@ function showQuestion() {
       <div class="option-background"></div>
     `;
   
-    // For the very first question, simply set content and trigger fade-in.
     if (currentQuestion === 0) {
       questionContainer.innerHTML = newContent;
       questionContainer.classList.remove('fade-out');
@@ -222,22 +283,17 @@ function showQuestion() {
       return;
     }
   
-    // For subsequent questions, fade-out first.
     questionContainer.classList.remove('fade-in');
     questionContainer.classList.add('fade-out');
   
-    // Wait for fade-out animation to finish before updating content.
     questionContainer.addEventListener('animationend', function handler() {
-      // Remove this event listener so it doesn't trigger for other animations.
       questionContainer.removeEventListener('animationend', handler);
-      // Update content and trigger fade-in.
       questionContainer.innerHTML = newContent;
       questionContainer.classList.remove('fade-out');
       questionContainer.classList.add('fade-in');
     });
-  }
+}
   
-
 // Handle option hover effects
 function handleOptionHover(button, isHovering) {
     const background = button.closest('.question-container')?.querySelector('.option-background');
@@ -254,23 +310,20 @@ function handleOptionHover(button, isHovering) {
         }
     }
 }
-
+  
 // Handle option selection
 function selectOption(optionIndex) {
     const question = questions[currentQuestion];
     const selectedOption = question.options[optionIndex];
 
-    // Update scores
     Object.entries(selectedOption.score).forEach(([category, points]) => {
         userScores[category] += points;
     });
 
-    // Visual feedback
     const buttons = document.querySelectorAll('.option-btn');
     buttons.forEach(btn => btn.classList.remove('selected'));
     buttons[optionIndex].classList.add('selected');
 
-    // Transition effect
     setTimeout(() => {
         if (currentQuestion < questions.length - 1) {
             currentQuestion++;
@@ -282,7 +335,7 @@ function selectOption(optionIndex) {
         }
     }, 800);
 }
-
+  
 // Show results after quiz is complete, with a reset button
 function showResults() {
     const questionContainer = document.getElementById('questionContainer');
@@ -290,7 +343,6 @@ function showResults() {
 
     questionContainer.style.display = 'none';
 
-    // Get top 2 positions based on scores
     const topPositions = Object.entries(userScores)
         .sort(([, a], [, b]) => b - a)
         .slice(0, 2)
@@ -321,7 +373,7 @@ function showResults() {
     resultContainer.style.display = 'block';
     setTimeout(() => resultContainer.classList.add('active'), 50);
 }
-
+  
 // Handle "Too Lazy?" positions view (skip) with reset button at the bottom
 function showAllPositions() {
     const questionContainer = document.getElementById('questionContainer');
@@ -357,7 +409,7 @@ function showAllPositions() {
         setTimeout(() => resultContainer.classList.add('active'), 50);
     }, 500);
 }
-
+  
 // Handle result card hover effects
 function handleCardHover(card, isHovering) {
     const background = card.querySelector('.card-background');
@@ -370,7 +422,7 @@ function handleCardHover(card, isHovering) {
         background.style.opacity = '0';
     }
 }
-
+  
 // Handle job application
 function applyForPosition(position) {
     const roleTitle = positions[position].title;
@@ -384,7 +436,7 @@ function applyForPosition(position) {
     window.location.href = `mailto:careers@deardiary.com?subject=${subject}&body=${body}`;
     alert(`Thanks for your interest in the ${roleTitle} position! Our team will be in touch soon.`);
 }
-
+  
 // Reset the quiz to the initial state
 function resetQuiz() {
     currentQuestion = 0;
@@ -393,10 +445,11 @@ function resetQuiz() {
         videoEditor: 0,
         videographer: 0,
         softwareDeveloper: 0,
-        socialMedia: 0
+        socialMedia: 0,
+        copywriter: 0,
+        salesman: 0
     };
 
-    // Hide the result container and show the question container again
     const resultContainer = document.getElementById('resultContainer');
     resultContainer.classList.remove('active');
     setTimeout(() => {
@@ -406,6 +459,6 @@ function resetQuiz() {
         showQuestion();
     }, 500);
 }
-
+  
 // Start the quiz on page load
 document.addEventListener('DOMContentLoaded', showQuestion);
