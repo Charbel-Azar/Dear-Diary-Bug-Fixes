@@ -525,6 +525,42 @@ body.no-scroll {
   overflow: hidden;
 }
 
+/* Bouncing arrow styling */
+.scroll-arrow {
+  position: absolute;
+  bottom: 20px;              /* adjust vertical positioning as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3vh;            /* adjust size as needed */
+  color: #fff;
+  animation: bounce2 1.5s infinite;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  z-index: 10;
+}
+
+/* Bounce animation */
+@keyframes bounce2 {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+/* Fade out class */
+.fade-out2 {
+  opacity: 0;
+}
+
+/* Optional: show arrow only on mobile */
+@media only screen and (min-width: 769px) {
+  .scroll-arrow {
+    display: none;
+  }
+}
+
 .video-container {
   position: relative;
   width: 100%;
@@ -1573,7 +1609,7 @@ Dirty Secret
 
 .socialf-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.1rem;
   justify-content: flex-start;
 }
 
