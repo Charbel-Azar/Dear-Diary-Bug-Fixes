@@ -29,8 +29,25 @@
   <!-- End Meta Pixel Code -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Tell Stories That Matter" />
-    <meta name="author" content="Dear Diary" />
+      <!-- Improved Meta Description (150-160 chars) -->
+      <meta name="description" content="Dear Diary Media - Beirut's premier storytelling marketing agency. We create powerful brand stories that captivate and connect with your audience.">
+        
+      <meta name="author" content="Dear Diary Media">
+      <meta name="robots" content="index, follow">
+      
+      <!-- Open Graph for Social Sharing -->
+      <meta property="og:title" content="Dear Diary Media | Storytelling Agency in Beirut">
+      <meta property="og:description" content="We help brands tell stories that resonate with their audience. Social media marketing, branding, and creative storytelling.">
+      <meta property="og:image" content="https://www.deardiary.media/assests/images/logo/white_transparent_logo.png">
+      <meta property="og:url" content="https://www.deardiary.media">
+      <meta property="og:type" content="website">
+      
+      <!-- Twitter Card -->
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="Dear Diary Media - Storytelling Agency in Beirut">
+      <meta name="twitter:description" content="We help brands tell meaningful stories. Social media, branding, and content marketing.">
+      <meta name="twitter:image" content="https://www.deardiary.media/assests/images/logo/white_transparent_logo.png">
+
     <link
       rel="icon"
       type="image/ico"
@@ -198,58 +215,42 @@
       href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Syne:wght@400..800&display=swap"
       rel="stylesheet"
     />
-    <title>Dear Diary</title>
+    <title>Dear Diary Media | Storytelling Marketing Agency in Beirut</title>
   </head>
 
   <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation">
       <div class="nav-container">
         <div class="logo">
           <a href="index.html">
             <img
               src="./assests/images/logo/white_transparent_logo.png"
-              alt="Dear Diary Logo"
+              alt="Dear Diary Media Logo"
+              title="Dear Diary Media Logo"
+              aria-label="Dear Diary Media official logo"
             />
           </a>
         </div>
 
         <div class="nav-links">
-          <a href="ourstory.html">Our Story</a>
-          <a href="ourwork.html">Our Work</a>
-          <a href="offers.html">Offers</a>
-          <a href="careers.html">Careers</a>
+          <a href="ourstory.html" aria-label="Read our Story">Our Story</a>
+          <a href="ourwork.html" aria-label="View our Work">Our Work</a>
+          <a href="offers.html" aria-label="Special Offers">Offers</a>
+          <a href="careers.html" aria-label="Join our Team">Careers</a>
         </div>
+    
         <div class="social-links">
-          <a
-            href="https://www.instagram.com/deardiary.media"
-            aria-label="Instagram"
-            ><i class="fab fa-instagram"></i
-          ></a>
-          <a
-            href="https://www.facebook.com/people/Dear-Diary-Media/61572525600344/"
-            aria-label="Facebook"
-            ><i class="fab fa-facebook"></i
-          ></a>
-          <a
-            href="https://wa.me/96171293786?text=Hey%21"
-            aria-label="Custom Icon"
-          >
-            <img
-              style="width: 3.5vh !important"
-              src="./assests/images/camera/sexy (1).png "
-              alt="Custom Icon"
-            />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/dear-diary-media/"
-            aria-label="LinkedIn"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-          <a href="https://www.tiktok.com/@deardiary.media" aria-label="TikTok"
-            ><i class="fab fa-tiktok"></i
-          ></a>
+          <a href="https://www.instagram.com/deardiary.media" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/people/Dear-Diary-Media/61572525600344/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://wa.me/96171293786?text=Hey%21" aria-label="WhatsApp"> <img
+            style="width: 3.5vh !important"
+            src="./assests/images/camera/sexy (1).png "
+            alt="Sexy"/></a>
+          <a href="https://www.linkedin.com/company/dear-diary-media/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.tiktok.com/@deardiary.media" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
+      
 
         <button class="mobile-menu-btn" aria-label="Toggle menu">
           <div class="menu-circle">
@@ -264,10 +265,10 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu">
       <div class="mobile-menu-links">
-        <a href="ourstory.html">Our Story</a>
-        <a href="ourwork.html">Our Work</a>
-        <a href="offers.html">Offers</a>
-        <a href="careers.html">Careers</a>
+        <a href="ourstory.html" aria-label="Read our Story">Our Story</a>
+          <a href="ourwork.html" aria-label="View our Work">Our Work</a>
+          <a href="offers.html" aria-label="Special Offers">Offers</a>
+          <a href="careers.html" aria-label="Join our Team">Careers</a>
       </div>
       <div class="mobile-social-links">
         <a
@@ -305,7 +306,9 @@
     <!-- LOADING SCREEN -->
     <section id="loading-screen" class="loading-screen-section">
       <div class="containercamera">
-        <video class="videocamera" autoplay muted loop playsinline>
+        <video class="videocamera" autoplay muted loop playsinline   title="Loading Animation"
+        aria-label="Loading animation before the website fully loads.">
+      >
           <source
             src="./assests/images/camera/loading (4).mp4"
             type="video/mp4"
@@ -352,7 +355,9 @@
           class="video-container"
           style="position: relative; overflow: hidden"
         >
-          <video class="hero-video" autoplay muted loop playsinline>
+          <video class="hero-video" autoplay muted loop playsinline title="Dear Diary Media Introduction Video"
+          aria-label="A short intro about Dear Diary Media, showcasing our storytelling approach.">
+         >
             <source src="./assests/images/camera/intro.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -379,6 +384,8 @@
                     <img
                       src="./assests/images/logo/black_transparent_logo.png"
                       alt="Notebook Cover"
+                      title="Notebook Cover"
+                      aria-label="A creative notebook cover image used in the storytelling section."
                       class="cover-image"
                     />
                   </div>
@@ -489,7 +496,9 @@
 
       <section class="video-expand-section">
         <div class="video-wrapper">
-          <video class="expanding-video" autoplay muted loop playsinline>
+          <video class="expanding-video" autoplay muted loop playsinline title="Secret Video"
+          aria-label="An interactive video prompting visitors to share their brand’s secret stories.">
+        >
             <source src="./assests/images/camera/intro.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -579,7 +588,8 @@
                 loop
                 playsinline
                 preload="auto"
-                class="after-video"
+                class="after-video" title="Before Marketing Strategy Video"
+                aria-label="A sample video showcasing a brand before marketing changes."
               >
                 <source
                   src="./assests/images/beforeafter/After1.mp4"
@@ -593,7 +603,8 @@
                 loop
                 playsinline
                 preload="auto"
-                class="before-video"
+                class="before-video" title="Before Marketing Strategy Video"
+                aria-label="A sample video showcasing a brand before marketing changes."
               >
                 <source
                   src="./assests/images/beforeafter/Before1.mp4"
@@ -617,7 +628,8 @@
                 loop
                 playsinline
                 preload="auto"
-                class="after-video"
+                class="after-video" title="Before Marketing Strategy Video"
+                aria-label="A sample video showcasing a brand before marketing changes."
               >
                 <source
                   src="./assests/images/beforeafter/After2.mp4"
@@ -631,7 +643,8 @@
                 loop
                 playsinline
                 preload="auto"
-                class="before-video"
+                class="before-video" title="Before Marketing Strategy Video"
+                aria-label="A sample video showcasing a brand before marketing changes."
               >
                 <source
                   src="./assests/images/beforeafter/Before2.mp4"
@@ -655,7 +668,8 @@
                 loop
                 playsinline
                 preload="auto"
-                class="after-video"
+                class="after-video" title="Before Marketing Strategy Video"
+                aria-label="A sample video showcasing a brand before marketing changes."
               >
                 <source
                   src="./assests/images/beforeafter/After3.mp4"
@@ -669,7 +683,8 @@
                 loop
                 playsinline
                 preload="auto"
-                class="before-video"
+                class="before-video" title="Before Marketing Strategy Video"
+                aria-label="A sample video showcasing a brand before marketing changes."
               >
                 <source
                   src="./assests/images/beforeafter/Before3.mp4"
@@ -1288,6 +1303,33 @@
         }
       });
     </script>
-    
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Dear Diary Media",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Bshara Lkhoury, Beirut Digital District, 1079",
+          "addressLocality": "Beirut",
+          "addressCountry": "LB"
+        },
+        "telephone": "+961 78 974 222",
+        "url": "https://www.deardiary.media",
+        "image": "https://www.deardiary.media/assets/images/logo/white_transparent_logo.png",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "33.8928",
+          "longitude": "35.5018"
+        },
+        "sameAs": [
+          "https://www.instagram.com/deardiary.media",
+          "https://www.facebook.com/people/Dear-Diary-Media/61572525600344/",
+          "https://www.linkedin.com/company/dear-diary-media/",
+          "https://www.tiktok.com/@deardiary.media"
+        ]
+      }
+      </script>
+      
   </body>
 </html>
