@@ -274,6 +274,7 @@ window.startMusic = function () {
     const flash = document.querySelector(".flash");
     const loadingScreen = document.getElementById("loading-screen");
     const mainContent = document.getElementById("main-content");
+    const heroVideo = document.querySelector(".hero-video");
 
     // Custom crosshair
     const crosshair = document.createElement("img");
@@ -312,57 +313,63 @@ window.startMusic = function () {
     shutterSound.preload = "auto";
 
     // Track load states
-    let isFullyLoaded = false;
-    let isVideoLoaded = false;
+    let isPageFullyLoaded   = false;
+    let isLoadingVideoReady = false;
+    let isHeroVideoReady    = false;
 
-    window.addEventListener("load", () => {
-      isFullyLoaded = true;
+    // Let’s require the window (DOM + images etc.) to be loaded
+  window.addEventListener("load", () => {
+    isPageFullyLoaded = true;
+  });
+
+  // 2) Check if loadingVideo is already loaded
+  if (loadingVideo.readyState >= 3) {
+    isLoadingVideoReady = true;
+  } else {
+    // Use loadeddata so we get the first frame
+    loadingVideo.addEventListener("loadeddata", () => {
+      isLoadingVideoReady = true;
     });
+  }
 
-    // Wait for the loading video to be ready
+  // 3) Check if heroVideo is already loaded
+  //    (Many prefer loadedmetadata or loadeddata. 
+  //     Either one ensures the video won't be black.)
+  if (heroVideo.readyState >= 2) {
+    isHeroVideoReady = true;
+  } else {
+    heroVideo.addEventListener("loadeddata", () => {
+      isHeroVideoReady = true;
+    });
+  }
+  
+  // Fallback after 30s (skip everything)
+  const fallbackTimeout = setTimeout(() => {
+    endLoadingScreen(true);
+    clearInterval(loadingCheckInterval);
+  }, 30000);
 
-    if (loadingVideo.readyState > 3) {
-      isVideoLoaded = true;
-    } else {
-      loadingVideo.addEventListener("canplaythrough", () => {
-        isVideoLoaded = true;
-      });
+  // 4) Periodically check if everything is ready
+  const loadingCheckInterval = setInterval(() => {
+    if (isPageFullyLoaded && isLoadingVideoReady && isHeroVideoReady) {
+      endLoadingScreen();
+      clearInterval(loadingCheckInterval);
+      clearTimeout(fallbackTimeout);
     }
+  }, 500);
 
-    // End loading screen when both page and video are ready
-    function endLoadingScreen(isFallback = false) {
-      if (!isVideoLoaded && !isFallback) {
-        console.log("Waiting for loading video to be ready...");
-        return;
-      }
-      setTimeout(() => {
-        loadingScreen.classList.add("hide");
-        setTimeout(() => {
-          loadingScreen.style.display = "none";
-          mainContent.style.display = "block";
-          document.body.classList.remove("no-scroll");
-          //window.scrollTo(0, initialScroll);
-          loadingVideo.pause(); // Pause the loading screen video
-          crosshair.remove();
-          // Start background music
-          window.startMusic();
-        }, 1000);
-      }, 500);
-    }
-
-    // Use a timer to check if both conditions are met
-    const checkLoadInterval = setInterval(() => {
-      if (isFullyLoaded && isVideoLoaded) {
-        endLoadingScreen();
-        clearInterval(checkLoadInterval);
-      }
-    }, 800);
-
-    // Fallback: after 15 seconds, end loading screen regardless
+  function endLoadingScreen(forceSkip = false) {
+    // Hide screen, show main site, start music, etc.
+    loadingScreen.classList.add("hide");
     setTimeout(() => {
-      endLoadingScreen(true);
-      clearInterval(checkLoadInterval);
-    }, 30000);
+      loadingScreen.style.display = "none";
+      mainContent.style.display = "block";
+      document.body.classList.remove("no-scroll");
+      // Start background music
+      window.startMusic();
+    }, 1000);
+  }
+  
 
     // Flash effect
     function triggerFlash() {
