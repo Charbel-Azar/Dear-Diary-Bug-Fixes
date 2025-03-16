@@ -16,7 +16,10 @@ class MusicController {
       return MusicController.instance;
     }
 
-    this.songs = ["./assests/music/ES_Always by Your Side - House Of Say.mp3"];
+    this.songs = [
+      "./assests/music/music (1).mp3",
+      "./assests/music/music (2).mp3",
+      "./assests/music/music (3).mp3"];
 
     // Flags controlling playback
     this.isMuted = true;
@@ -37,7 +40,7 @@ class MusicController {
     // Fade settings
     this.fadeTime = 500;
     this.fadeInterval = 50;
-    this.targetVolume = 1.0;
+    this.targetVolume = 0.5;
     this.isFading = false;
     this.fadeTimer = null;
 
