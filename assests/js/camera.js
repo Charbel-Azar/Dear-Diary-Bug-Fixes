@@ -274,6 +274,7 @@ window.startMusic = function () {
     const flash = document.querySelector(".flash");
     const loadingScreen = document.getElementById("loading-screen");
     const mainContent = document.getElementById("main-content");
+    const heroVideo = document.querySelector(".hero-video");
 
     // Custom crosshair
     const crosshair = document.createElement("img");
@@ -328,6 +329,14 @@ window.startMusic = function () {
         isVideoLoaded = true;
       });
     }
+       // 3) EXACTLY the same for heroVideo
+       if (heroVideo.readyState > 3) {
+        isHeroVideoReady = true;
+      } else {
+        heroVideo.addEventListener("canplaythrough", () => {
+          isHeroVideoReady = true;
+        });
+      }
 
     // End loading screen when both page and video are ready
     function endLoadingScreen(isFallback = false) {
@@ -350,19 +359,20 @@ window.startMusic = function () {
       }, 500);
     }
 
-    // Use a timer to check if both conditions are met
-    const checkLoadInterval = setInterval(() => {
-      if (isFullyLoaded && isVideoLoaded) {
-        endLoadingScreen();
+       // 4) We call endLoadingScreen only if all are true
+       const checkLoadInterval = setInterval(() => {
+        if (isFullyLoaded && isLoadingVideoReady && isHeroVideoReady) {
+          endLoadingScreen();
+          clearInterval(checkLoadInterval);
+        }
+      }, 800);
+  
+      // 5) existing fallback
+      setTimeout(() => {
+        endLoadingScreen(true);
         clearInterval(checkLoadInterval);
-      }
-    }, 800);
-
-    // Fallback: after 15 seconds, end loading screen regardless
-    setTimeout(() => {
-      endLoadingScreen(true);
-      clearInterval(checkLoadInterval);
-    }, 30000);
+      }, 30000);
+  
 
     // Flash effect
     function triggerFlash() {
