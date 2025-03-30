@@ -320,7 +320,7 @@ NAVIGATION STYLES
   }
   #flashing-text {
     color: #fff;
-    font-size: 4rem; /* optional, pick a size you like */
+    font-size: 10vh; /* optional, pick a size you like */
     /* Optionally add any special animation or blinking effect here */
   }
   

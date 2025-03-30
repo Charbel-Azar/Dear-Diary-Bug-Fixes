@@ -259,78 +259,72 @@ class MusicController {
   /****************************************************
    *  LOADING SCREEN LOGIC (cleaned of camera code)
    ****************************************************/ document.addEventListener("DOMContentLoaded", function () {
-    // Prevent user from scrolling on load
-    const initialScroll = window.scrollY;
-    window.scrollTo(0, 0);
-    document.body.classList.add("no-scroll");
+  // Prevent user from scrolling on load
+  const initialScroll = window.scrollY;
+  window.scrollTo(0, 0);
+  document.body.classList.add("no-scroll");
 
-    const loadingVideo = document.querySelector(".videocamera");
-    const loadingScreen = document.getElementById("loading-screen");
-    const mainContent = document.getElementById("main-content");
+  const loadingVideo = document.querySelector(".videocamera");
+  const loadingScreen = document.getElementById("loading-screen");
+  const mainContent = document.getElementById("main-content");
 
-    let isFullyLoaded = false;
-    let isVideoLoaded = false;
+  let isFullyLoaded = false;
+  let isVideoLoaded = true;
 
-    // Full page load
-    window.addEventListener("load", () => {
-      isFullyLoaded = true;
-    });
-
-    // Check video readiness
-    if (loadingVideo && loadingVideo.readyState > 3) {
-      isVideoLoaded = true;
-    } else if (loadingVideo) {
-      loadingVideo.addEventListener("canplaythrough", () => {
-        isVideoLoaded = true;
-      });
-    }
-
-    // ========== NEW FLASHING WORDS LOGIC ==========
-    const flashTextElement = document.getElementById("flashing-text");
-    const flashingWords = [
-      "Loading...",
-      "Preparing...",
-      "Almost There...",
-      "Fetching Data...",
-      "Starting Up...",
-      "Here We Go!"
-    ];
-    let currentIndex = 0;
-
-    setInterval(() => {
-      flashTextElement.textContent = flashingWords[currentIndex];
-      currentIndex = (currentIndex + 1) % flashingWords.length;
-    }, 100);
-    // =============================================
-
-    function endLoadingScreen(isFallback = false) {
-      if (!isVideoLoaded && !isFallback) {
-        console.log("Waiting for loading video to be ready...");
-        return;
-      }
-      setTimeout(() => {
-        loadingScreen.classList.add("hide");
-        setTimeout(() => {
-          loadingScreen.style.display = "none";
-          mainContent.style.display = "block";
-          document.body.classList.remove("no-scroll");
-          
-          // Start background music now (your existing logic)
-          window.startMusic();
-        }, 1000);
-      }, 500);
-    }
-
-    const checkLoadInterval = setInterval(() => {
-      if (isFullyLoaded && isVideoLoaded) {
-        endLoadingScreen();
-        clearInterval(checkLoadInterval);
-      }
-    }, 800);
-
-    // Fallback after 15s
-    setTimeout(() => {
-      endLoadingScreen(true);
-      clearInterval(checkLoadInterval);
-    }, 15000);
+  // Full page load
+  window.addEventListener("load", () => {
+    isFullyLoaded = true;
   });
+
+
+  // ========== FLASHING WORDS LOGIC (random start) ==========
+  const flashTextElement = document.getElementById("flashing-text");
+  const flashingWords = [
+    "Loading...",
+    "Preparing...",
+    "Almost There...",
+    "Fetching Data...",
+    "Starting Up...",
+    "Here We Go!"
+  ];
+
+  // Pick a random starting index
+  let currentIndex = Math.floor(Math.random() * flashingWords.length);
+
+  // Update the text every 200 ms
+  setInterval(() => {
+    flashTextElement.textContent = flashingWords[currentIndex];
+    currentIndex = (currentIndex + 1) % flashingWords.length;
+  }, 120);
+  // ========================================================
+
+  function endLoadingScreen(isFallback = false) {
+    if (!isVideoLoaded && !isFallback) {
+      console.log("Waiting for loading video to be ready...");
+      return;
+    }
+    setTimeout(() => {
+      loadingScreen.classList.add("hide");
+      setTimeout(() => {
+        loadingScreen.style.display = "none";
+        mainContent.style.display = "block";
+        document.body.classList.remove("no-scroll");
+        // Start background music now
+        window.startMusic();
+      }, 1000);
+    }, 500);
+  }
+
+  const checkLoadInterval = setInterval(() => {
+    if (isFullyLoaded && isVideoLoaded) {
+      endLoadingScreen();
+      clearInterval(checkLoadInterval);
+    }
+  }, 800);
+
+  // Fallback after 15s
+  setTimeout(() => {
+    endLoadingScreen(true);
+    clearInterval(checkLoadInterval);
+  }, 15000);
+});
