@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
         crosshair.style.display = 'none';
       }
     });
+    
   
     container.addEventListener('mouseleave', () => {
       crosshair.style.display = 'none';

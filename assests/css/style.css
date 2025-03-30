@@ -320,7 +320,7 @@ NAVIGATION STYLES
   }
   #flashing-text {
     color: #fff;
-    font-size: 10vh; /* optional, pick a size you like */
+    font-size: 8vh; /* optional, pick a size you like */
     /* Optionally add any special animation or blinking effect here */
   }
   
@@ -414,7 +414,7 @@ NAVIGATION STYLES
 
 /* Wave text effect */
 .wave-text {
-  margin-top: 2vh;
+  margin-top: 10vh;
   color: #fff;
   font-family: var(--body-font, sans-serif);
   font-size: 3vh;
@@ -456,8 +456,10 @@ NAVIGATION STYLES
   pointer-events: none;
   z-index: 1000000; 
   display: none; 
+
   mix-blend-mode: difference;
   filter: invert(1) drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
+
 }
 
 /* Polaroid container */
