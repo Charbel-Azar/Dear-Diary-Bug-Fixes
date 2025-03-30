@@ -258,27 +258,25 @@ class MusicController {
   
   /****************************************************
    *  LOADING SCREEN LOGIC (cleaned of camera code)
-   ****************************************************/
-  document.addEventListener("DOMContentLoaded", function () {
+   ****************************************************/ document.addEventListener("DOMContentLoaded", function () {
     // Prevent user from scrolling on load
     const initialScroll = window.scrollY;
     window.scrollTo(0, 0);
     document.body.classList.add("no-scroll");
-  
-    const loadingVideo = document.querySelector(".videocamera"); // The loading screen's video
+
+    const loadingVideo = document.querySelector(".videocamera");
     const loadingScreen = document.getElementById("loading-screen");
     const mainContent = document.getElementById("main-content");
-  
-    // Track load states
+
     let isFullyLoaded = false;
     let isVideoLoaded = false;
-  
-    // Wait for full page load
+
+    // Full page load
     window.addEventListener("load", () => {
       isFullyLoaded = true;
     });
-  
-    // Check if video is already ready; if not, wait for canplaythrough
+
+    // Check video readiness
     if (loadingVideo && loadingVideo.readyState > 3) {
       isVideoLoaded = true;
     } else if (loadingVideo) {
@@ -286,10 +284,26 @@ class MusicController {
         isVideoLoaded = true;
       });
     }
-  
-    // End loading screen once both page and video are ready
+
+    // ========== NEW FLASHING WORDS LOGIC ==========
+    const flashTextElement = document.getElementById("flashing-text");
+    const flashingWords = [
+      "Loading...",
+      "Preparing...",
+      "Almost There...",
+      "Fetching Data...",
+      "Starting Up...",
+      "Here We Go!"
+    ];
+    let currentIndex = 0;
+
+    setInterval(() => {
+      flashTextElement.textContent = flashingWords[currentIndex];
+      currentIndex = (currentIndex + 1) % flashingWords.length;
+    }, 100);
+    // =============================================
+
     function endLoadingScreen(isFallback = false) {
-      // If not fallback and video isn't ready, keep waiting
       if (!isVideoLoaded && !isFallback) {
         console.log("Waiting for loading video to be ready...");
         return;
@@ -300,29 +314,23 @@ class MusicController {
           loadingScreen.style.display = "none";
           mainContent.style.display = "block";
           document.body.classList.remove("no-scroll");
-          // Restore user scroll if you want:
-          // window.scrollTo(0, initialScroll);
-  
-
-  
-          // Start background music now
+          
+          // Start background music now (your existing logic)
           window.startMusic();
-        }, 1000); // matches your CSS transition
+        }, 1000);
       }, 500);
     }
-  
-    // Polling: check if both conditions are met
+
     const checkLoadInterval = setInterval(() => {
       if (isFullyLoaded && isVideoLoaded) {
         endLoadingScreen();
         clearInterval(checkLoadInterval);
       }
     }, 800);
-  
-    // Fallback: after 15s, end loading screen regardless
+
+    // Fallback after 15s
     setTimeout(() => {
       endLoadingScreen(true);
       clearInterval(checkLoadInterval);
     }, 15000);
   });
-  

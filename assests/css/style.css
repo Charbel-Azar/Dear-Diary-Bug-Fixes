@@ -295,10 +295,6 @@ NAVIGATION STYLES
 }
 
 /* =========================
-LOADING SCREEN
-========================= */
-/* Full-page loading screen */
-/* =========================
    LOADING SCREEN
    ======================== */
    #loading-screen {
@@ -322,6 +318,12 @@ LOADING SCREEN
     pointer-events: none;
     z-index: 10000; 
   }
+  #flashing-text {
+    color: #fff;
+    font-size: 4rem; /* optional, pick a size you like */
+    /* Optionally add any special animation or blinking effect here */
+  }
+  
   
   /* Example: just some minimal styling to show something loading */
   .simple-loading {
