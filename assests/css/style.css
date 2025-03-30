@@ -298,49 +298,91 @@ NAVIGATION STYLES
 LOADING SCREEN
 ========================= */
 /* Full-page loading screen */
+/* =========================
+   LOADING SCREEN
+   ======================== */
+   #loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 10000; /* Keep it on top */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    flex-direction: column;
+  }
+  #loading-screen.hide {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10000; 
+  }
+  
+  /* Example: just some minimal styling to show something loading */
+  .simple-loading {
+    color: #fff;
+    font-family: var(--body-font);
+    text-align: center;
+    /* You can add a spinner or an animation here */
+  }
+  
+  /* Keep skip-button logic if you still want a skip button */
+  .skip-button {
+    position: absolute;
+    bottom: 2vh;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 30px;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 25px;
+    font-family: var(--body-font);
+    font-size: 2vh;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.5s ease;
+    visibility: hidden; 
+  }
+  .skip-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+  .skip-button.show {
+    opacity: 1;
+    visibility: visible;
+  }
 
-#loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  z-index: 10000; /* Highest z-index */
+  /*======
+  take a pic
+  *====/
+  /************************************
+   CAMERA CAPTURE FEATURE
+************************************/
+
+/* The wrapper around everything */
+.camera-capture-wrapper {
+  position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  transition: transform 1s ease-in-out, opacity 1s ease-in-out; /* Add opacity transition */
   flex-direction: column;
-  opacity: 1;
+  align-items: center;
+  justify-content: center;
+  margin: 3vh auto;
 }
 
-/* Modified hide class for loading screen */
-#loading-screen.hide {
-  transform: translateY(-100%);
-  opacity: 0; /* Fade out while sliding */
-  pointer-events: none; /* Prevent interaction while hidden */
-  z-index: 10000; /* Maintain high z-index during transition */
-}
-.custom-crosshair {
-  position: fixed;
-  width: 4vh; /* Adjust based on your image size */
-  height: 4vh; /* Adjust based on your image size */
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 1000000; /* Increased z-index to ensure it's above everything */
-  display: none; /* Start hidden */
-  mix-blend-mode: difference;
-  filter: invert(1) drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
-}
-
+/* Container that displays the video */
 .containercamera {
   position: relative;
   width: 80vh;
   height: 50vh;
   overflow: hidden;
   cursor: none; /* Hide the default cursor */
+  border-radius: 20px;
 }
 
 .videocamera {
@@ -348,22 +390,19 @@ LOADING SCREEN
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none; /* So video doesn't block click events */
   border-radius: 20px;
-  pointer-events: none; /* Ensure video doesn't capture mouse events */
 }
 
-/* Mobile styles: make the container square and let the video fill it */
+/* For mobile screens, resize as needed */
 @media only screen and (max-width: 768px) {
   .containercamera {
-    /* For mobile, use a square container that fits within the viewport.
-       Adjust the vw value as needed. */
     width: 90vw;
     height: 90vw;
     border-radius: 20px;
-    margin: 0 auto; /* center horizontally if desired */
+    margin: 0 auto;
   }
   .videocamera {
-    /* Reset to fill the container */
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -371,74 +410,29 @@ LOADING SCREEN
   }
 }
 
+/* Wave text effect */
 .wave-text {
-  position: absolute;
-  bottom: 10vh;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  font-family: var(--body-font);
+  margin-top: 2vh;
+  color: #fff;
+  font-family: var(--body-font, sans-serif);
   font-size: 3vh;
   white-space: nowrap;
 }
-
 .wave-text span {
   display: inline-block;
-  /* Each span uses the custom property --i to determine its delay */
   animation: wave 1.5s infinite ease-in-out;
   animation-delay: calc(var(--i) * 0.05s);
 }
-
 @keyframes wave {
-  0%,
-  100% {
+  0%,100% {
     transform: translateY(0);
   }
   50% {
     transform: translateY(-15px);
   }
 }
-.skip-button {
-  position: absolute;
-  bottom: 2vh;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 30px;
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-  border-radius: 25px;
-  font-family: var(--body-font);
-  font-size: 2vh;
-  cursor: pointer;
-  opacity: 0;
-  transition: all 0.5s ease;
-  visibility: hidden; /* Start with button hidden */
-}
 
-.skip-button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-}
-
-.skip-button.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.imagecamera {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.activecamera {
-  opacity: 1;
-}
-
+/* The flash overlay */
 .flash {
   position: fixed;
   top: 0;
@@ -448,11 +442,25 @@ LOADING SCREEN
   background: white;
   opacity: 0;
   pointer-events: none;
-  z-index: 1000;
+  z-index: 9999;
 }
 
+/* Custom crosshair styling */
+.custom-crosshair {
+  position: fixed;
+  width: 4vh; 
+  height: 4vh;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1000000; 
+  display: none; 
+  mix-blend-mode: difference;
+  filter: invert(1) drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
+}
+
+/* Polaroid container */
 .polaroid {
-  position: fixed; /* Changed to fixed for viewport-relative positioning */
+  position: fixed;
   width: 20vh;
   height: 20vh;
   background: white;
@@ -461,16 +469,19 @@ LOADING SCREEN
   box-shadow: 0 0.4vh 0.8vh rgba(0, 0, 0, 0.3);
   transform: scale(0);
   transition: transform 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28),
-    opacity 1s ease-out;
+              opacity 1s ease-out;
   z-index: 99999;
   opacity: 1;
-  pointer-events: none; /* Ensure polaroids don't obstruct the crosshair */
+  pointer-events: none; /* So it doesn't block the crosshair */
 }
-
 .polaroid.show {
   transform: scale(1) rotate(var(--rotation));
 }
+.polaroid.fade-out {
+  opacity: 0;
+}
 
+/* Image inside polaroid */
 .polaroid-image {
   width: 100%;
   height: 100%;
@@ -478,38 +489,13 @@ LOADING SCREEN
   background: #333;
   border-radius: 5px;
   overflow: hidden;
-  pointer-events: none; /* Ensure polaroid images don't obstruct the crosshair */
+  pointer-events: none;
 }
-
 .polaroid-image canvas {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover;
-  pointer-events: none; /* Ensure canvas doesn't obstruct the crosshair */
-}
-
-/* Add no-scroll class */
-body.no-scroll {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-}
-
-.polaroid.fade-out {
-  opacity: 0;
-}
-
-.capture-area {
-  position: absolute;
-  border: 2px solid white;
-  width: 18vh;
-  height: 18vh;
   pointer-events: none;
-  transform: translate(-50%, -50%);
-  display: none;
-  z-index: 99;
-  border-radius: 5px;
 }
 
 /*=========================

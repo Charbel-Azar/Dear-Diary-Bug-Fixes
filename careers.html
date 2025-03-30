@@ -360,7 +360,7 @@
             ><i class="fab fa-facebook"></i
           ></a>
           <a
-            href="https://wa.me/96171293786?text=Hey%21"
+            href="https://calendly.com/deardiaryagency/30min"
             aria-label="Custom Icon"
           >
             <img
@@ -410,7 +410,7 @@
             ><i class="fab fa-facebook"></i
           ></a>
           <a
-            href="https://wa.me/96171293786?text=Hey%21"
+            href="https://calendly.com/deardiaryagency/30min"
             aria-label="Custom Icon"
           >
             <img
@@ -431,49 +431,66 @@
       </div>
     </div>
 
-    <section id="loading-screen" class="loading-screen-section">
-      <div class="containercamera">
-        <video class="videocamera" autoplay muted loop playsinline>
-          <source
-            src="./assests/images/camera/loading (3).mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="flash"></div>
-      <div class="wave-text">
-        <span style="--i: 0">C</span>
-        <span style="--i: 1">l</span>
-        <span style="--i: 2">i</span>
-        <span style="--i: 3">c</span>
-        <span style="--i: 4">k</span>
-        <span style="--i: 5">&nbsp;</span>
-        <span style="--i: 6">t</span>
-        <span style="--i: 7">o</span>
-        <span style="--i: 8">&nbsp;</span>
-        <span style="--i: 9">t</span>
-        <span style="--i: 10">a</span>
-        <span style="--i: 11">k</span>
-        <span style="--i: 12">e</span>
-        <span style="--i: 13">&nbsp;</span>
-        <span style="--i: 14">a</span>
-        <span style="--i: 15">&nbsp;</span>
-        <span style="--i: 16">p</span>
-        <span style="--i: 17">i</span>
-        <span style="--i: 18">c</span>
-        <span style="--i: 19">t</span>
-        <span style="--i: 20">u</span>
-        <span style="--i: 21">r</span>
-        <span style="--i: 22">e</span>
-      </div>
+   <section id="loading-screen" class="loading-screen-section">
+  <!-- 
+    This is now just a placeholder or spinner for loading. 
+    Feel free to customize this content. 
+  -->
+  <div class="simple-loading">
+    <!-- Put a logo, spinner, or minimal content here -->
+    <h2>Loading, please wait...</h2>
+  </div>
 
-      <button id="skip-button" class="skip-button">Skip</button>
-    </section>
+  <button id="skip-button" class="skip-button">Skip</button>
+</section>
 
     <!-- MAIN WEBSITE CONTENT -->
     <main id="main-content" class="main-content-section">
       <!-- Hero Video Section -->
+
+      <section>
+        <h2>My Camera Section</h2>
+        <!-- Here is the snippet -->
+        <div class="camera-capture-wrapper">
+          <div class="camera-capture-wrapper">
+            <div class="containercamera">
+              <video class="videocamera" autoplay muted playsinline></video>
+
+            </div>
+          <div class="wave-text">
+            <span style="--i: 0">C</span>
+            <span style="--i: 1">l</span>
+            <span style="--i: 2">i</span>
+            <span style="--i: 3">c</span>
+            <span style="--i: 4">k</span>
+            <span style="--i: 5">&nbsp;</span>
+            <span style="--i: 6">t</span>
+            <span style="--i: 7">o</span>
+            <span style="--i: 8">&nbsp;</span>
+            <span style="--i: 9">t</span>
+            <span style="--i: 10">a</span>
+            <span style="--i: 11">k</span>
+            <span style="--i: 12">e</span>
+            <span style="--i: 13">&nbsp;</span>
+            <span style="--i: 14">a</span>
+            <span style="--i: 15">&nbsp;</span>
+            <span style="--i: 16">p</span>
+            <span style="--i: 17">i</span>
+            <span style="--i: 18">c</span>
+            <span style="--i: 19">t</span>
+            <span style="--i: 20">u</span>
+            <span style="--i: 21">r</span>
+            <span style="--i: 22">e</span>
+          </div>
+          <div class="flash"></div>
+        </div>
+      </section>
+    
+
+
+
+
+
       <section class="career-section">
         <h1 class="career-title">Find Your Perfect Role</h1>
 
@@ -550,9 +567,10 @@
 
     <!-- SCRIPTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="./assests/js/camera.js"></script>
+    <script src="./assests/js/loading.js"></script>
     <script src="./assests/js/main.js"></script>
     <script src="./assests/js/careers.js"></script>
+    <script src="./assests/js/takeapic.js"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
