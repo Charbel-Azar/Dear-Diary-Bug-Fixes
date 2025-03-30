@@ -2635,6 +2635,9 @@ Dirty Secret
   padding: 2vw;
   overflow-wrap: break-word;
   height: 30vh;
+  display: flex;
+  align-items: center;       /* centers content vertically */
+  justify-content: center;   /* centers content horizontally */
 }
 
 /*==========================
