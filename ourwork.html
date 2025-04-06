@@ -37,6 +37,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="video" href="assests/images/camera/loading (1).mp4" />
+<link rel="preload" as="video" href="assests/images/camera/loading (2).mp4" />
+<link rel="preload" as="video" href="assests/images/camera/loading (3).mp4" />
+<link rel="preload" as="video" href="assests/images/camera/loading (4).mp4" />
+<link rel="preload" as="video" href="assests/images/camera/loading (5).mp4" />
 <link href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Syne:wght@400..800&display=swap" rel="stylesheet">
 <title>Dear Diary Media | Storytelling Marketing Agency in Beirut</title>
  <!-- Improved Meta Description (150-160 chars) -->
@@ -120,8 +125,12 @@
             aria-label="Facebook"
             ><i class="fab fa-facebook"></i
           ></a>
-          <a href="https://calendly.com/deardiaryagency/30min"aria-label="Custom Icon">
-            <img  style="width: 3.5vh !important;" src="./assests/images/camera/sexy (1).png " alt="Custom Icon" />
+          <a href="https://calendly.com/deardiaryagency/30min" aria-label="Appointment" target="_blank">
+            <img
+              style="width: 3.5vh !important"
+              src="./assests/images/camera/sexy (1).png"
+              alt="Sexy"
+            />
           </a>
           <a
             href="https://www.linkedin.com/company/dear-diary-media/"
@@ -163,8 +172,12 @@
           aria-label="Facebook"
           ><i class="fab fa-facebook"></i
         ></a>
-        <a href="https://calendly.com/deardiaryagency/30min"aria-label="Custom Icon">
-          <img  style="width: 3.5vh !important;" src="./assests/images/camera/sexy (1).png " alt="Custom Icon" />
+        <a href="https://calendly.com/deardiaryagency/30min" aria-label="Appointment" target="_blank">
+          <img
+            style="width: 3.5vh !important"
+            src="./assests/images/camera/sexy (1).png"
+            alt="Sexy"
+          />
         </a>
         <a
           href="https://www.linkedin.com/company/dear-diary-media/"
@@ -353,7 +366,7 @@
     You could be our next success story <br>You're only one meeting away
   </div>
     <div style="text-align: center;">
-      <a href="https://wa.me/96171293786?text=Hey%21" target="_blank" class="cta-button" style="margin-bottom: 5vh;">Book a Meeting!</a>
+      <a href="https://wa.me/96181955620?text=Hey%21" target="_blank" class="cta-button" style="margin-bottom: 5vh;">Book a Meeting!</a>
   </div>
   <div class="footer-bottom">
    <div class="socialf-links">
@@ -372,6 +385,15 @@
     </div>
   </div>
 </footer>
+<div id="hidden-preloads" style="display: none;">
+  <!-- Each video is hidden but preloads. Make sure to set muted, playsinline, etc. -->
+  <video id="preloaded-vid-0" src="./assests/images/camera/loading (1).mp4" preload="auto" muted playsinline></video>
+  <video id="preloaded-vid-1" src="./assests/images/camera/loading (2).mp4" preload="auto" muted playsinline></video>
+  <video id="preloaded-vid-2" src="./assests/images/camera/loading (3).mp4" preload="auto" muted playsinline></video>
+  <video id="preloaded-vid-3" src="./assests/images/camera/loading (4).mp4" preload="auto" muted playsinline></video>
+  <video id="preloaded-vid-4" src="./assests/images/camera/loading (5).mp4" preload="auto" muted playsinline></video>
+</div>
+
   </main>
 
   <!-- SCRIPTS -->
@@ -587,5 +609,7 @@ document.addEventListener("DOMContentLoaded", function() {
       ]
     }
     </script>
+    <!-- In your HTML, possibly at the bottom of <body> or inside a hidden container -->
+
 </body>
 </html>

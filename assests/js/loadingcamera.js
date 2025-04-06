@@ -415,20 +415,19 @@ window.startMusic = function () {
       console.log("Waiting for videos to be ready...");
       return;
     }
-    // Fade out the loading overlay
     setTimeout(() => {
       loadingScreen.classList.add("hide");
-      // Remove it from view after transition
       setTimeout(() => {
         loadingScreen.style.display = "none";
+        mainContent.style.display = "block";
         document.body.classList.remove("no-scroll");
-        // Start background music
+        // Start background music now
         window.startMusic();
       }, 1000);
     }, 500);
   }
 
-  // Periodically check if page is fully loaded & videos are ready
+  // Check periodically if both the page and videos are loaded
   const checkLoadInterval = setInterval(() => {
     if (isFullyLoaded && areVideosLoaded) {
       endLoadingScreen();
@@ -436,9 +435,9 @@ window.startMusic = function () {
     }
   }, 800);
 
-  // Fallback after 15 seconds if videos still aren’t ready
+  // Fallback after 15 seconds
   setTimeout(() => {
     endLoadingScreen(true);
     clearInterval(checkLoadInterval);
-  }, 15000);
+  }, 30000);
 });

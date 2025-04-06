@@ -295,36 +295,50 @@ NAVIGATION STYLES
 }
 
 /* =========================
-   LOADING SCREEN
-   ======================== */
-   #loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    z-index: 10000; /* Keep it on top */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 1;
-    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
-    flex-direction: column;
-  }
-  #loading-screen.hide {
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-    z-index: 10000; 
-  }
-  #flashing-text {
-    color: #fff;
-    font-size: 8vh; /* optional, pick a size you like */
-    /* Optionally add any special animation or blinking effect here */
-  }
-  
-  
+   LOADING SCREEN OVERLAY
+======================== */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;              /* or any loader background color */
+  z-index: 10000;               /* On top of main content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  flex-direction: column;
+}
+
+/* When we add .hide via JS, it slides up & fades out */
+#loading-screen.hide {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  /* keep z-index high if you want it not to reappear on accidental hover */
+  z-index: 10000;
+}
+
+/* Loader text styling */
+#flashing-text {
+  color: #fff;
+  font-size: 8vh; /* pick a size that suits you */
+  /* Additional animations or styles here */
+}
+
+/* =========================
+   MAIN CONTENT
+======================== */
+#main-content {
+  /* Make sure main content is visible from the start */
+  display: block;  
+  position: relative;
+  z-index: 1; /* Below the loading screen overlay */
+}
+
   /* Example: just some minimal styling to show something loading */
   .simple-loading {
     color: #fff;
@@ -599,12 +613,7 @@ NAVIGATION STYLES
   }
 }
 
-/* Ensure main content is visible */
-#main-content {
-  display: block;
-  position: relative;
-  z-index: 1;
-}
+
 .mobile-social-links {
   position: absolute;
   left: 0;
