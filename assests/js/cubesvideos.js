@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Locate the grid wrapper
   const videoGrid = document.querySelector('.video-grid');
   if (!videoGrid) {
     console.error('No element with class "video-grid" found in the DOM.');
@@ -8,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const gridSize = 3; // 3x3
   let currentPlayingVideo = null;
 
+  // Video & poster sources
   const videoSources = [
     'assests/images/cube/pint (1).mp4',
     'assests/images/cube/pint (2).mp4',
@@ -34,6 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let videoIndex = 0;
 
+  /****************************************
+   * Create the 3x3 grid of video cells
+   ****************************************/
   for (let row = 1; row <= gridSize; row++) {
     for (let col = 1; col <= gridSize; col++) {
       const cell = document.createElement('div');
@@ -41,24 +46,25 @@ document.addEventListener('DOMContentLoaded', () => {
       cell.dataset.row = row;
       cell.dataset.col = col;
 
+      // Create video element
       const video = document.createElement('video');
-      video.src = videoSources[videoIndex];       // Start preloading
+      video.src = videoSources[videoIndex]; // start preloading
       video.poster = posterSources[videoIndex];
-      video.setAttribute('playsinline', '');      
-      video.setAttribute('muted', '');            // Required for iOS autoplay
-      video.setAttribute('autoplay', '');         // Let them start silently
+      video.setAttribute('playsinline', ''); // required for iOS inline play
+      video.setAttribute('muted', '');       // required for iOS autoplay
+      video.setAttribute('autoplay', '');    // allow silent autoplay
       video.setAttribute('loop', '');
       video.setAttribute('preload', 'auto');
-
       videoIndex++;
 
+      // Create overlay with play/pause buttons
       const overlay = document.createElement('div');
       overlay.className = 'video-overlay';
 
       const playButton = document.createElement('button');
       playButton.className = 'play-button';
       playButton.innerHTML = `
-        <svg viewBox="0 0 24 24">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M8 5v14l11-7z"/>
         </svg>
       `;
@@ -66,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const pauseButton = document.createElement('button');
       pauseButton.className = 'pause-button';
       pauseButton.innerHTML = `
-        <svg viewBox="0 0 24 24">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M6 19h4V5H6zm8-14v14h4V5h-4z"/>
         </svg>
       `;
@@ -74,22 +80,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
       overlay.appendChild(playButton);
       overlay.appendChild(pauseButton);
+
+      // Add video & overlay to cell, and cell to the grid
       cell.appendChild(video);
       cell.appendChild(overlay);
       videoGrid.appendChild(cell);
     }
   }
 
-  /** GRID EXPANSION & HOVER EFFECTS **/
+  /****************************************
+   * GRID EXPANSION & HOVER EFFECTS
+   ****************************************/
   const BIG = 1.5, SMALL = 0.75;
   function expandGrid(hoveredRow, hoveredCol) {
     for (let r = 1; r <= gridSize; r++) {
-      document.documentElement.style.setProperty(`--row${r}`,
+      document.documentElement.style.setProperty(
+        `--row${r}`,
         r === hoveredRow ? `${BIG}fr` : `${SMALL}fr`
       );
     }
     for (let c = 1; c <= gridSize; c++) {
-      document.documentElement.style.setProperty(`--col${c}`,
+      document.documentElement.style.setProperty(
+        `--col${c}`,
         c === hoveredCol ? `${BIG}fr` : `${SMALL}fr`
       );
     }
@@ -111,7 +123,9 @@ document.addEventListener('DOMContentLoaded', () => {
     cell.addEventListener('mouseleave', resetGrid);
   });
 
-  /** FADE-IN OBSERVER **/
+  /****************************************
+   * FADE-IN OBSERVER
+   ****************************************/
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -121,54 +135,60 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1 });
   document.querySelectorAll('.video-cell').forEach(cell => observer.observe(cell));
 
-  /** VIDEO PLAY/PAUSE + SOUND ENABLE **/
+  /****************************************
+   * VIDEO PLAY/PAUSE + SOUND ENABLE
+   ****************************************/
   document.querySelectorAll('.video-cell video').forEach(video => {
-    // Since they're autoplay muted, they may already be playing (silently).
+    // Since they're autoplay+muted, they might already be playing silently.
     video.style.filter = 'grayscale(100%)';
+
     const cell = video.parentElement;
     const playBtn = cell.querySelector('.play-button');
     const pauseBtn = cell.querySelector('.pause-button');
 
-    // Show the play button by default
+    // Show play button initially, hide pause button
     playBtn.style.display = 'block';
     pauseBtn.style.display = 'none';
 
+    // When user clicks Play
     playBtn.addEventListener('click', (e) => {
       e.stopPropagation();
 
-      // If some other video was playing with sound, pause/mute it
+      // If another video is currently playing with sound, pause & mute it
       if (currentPlayingVideo && currentPlayingVideo !== video) {
         currentPlayingVideo.pause();
         currentPlayingVideo.style.filter = 'grayscale(100%)';
         const otherCell = currentPlayingVideo.parentElement;
         otherCell.querySelector('.play-button').style.display = 'block';
         otherCell.querySelector('.pause-button').style.display = 'none';
-        // Mute that other video again, if desired
+        // Mute the other video
         currentPlayingVideo.muted = true;
         currentPlayingVideo = null;
       }
 
-      // Unmute THIS video, then play it
+      // Unmute this video, then play it
       video.muted = false;
       video.play().catch(err => {
-        console.warn('iOS auto-play block or other error: ', err);
+        console.warn('iOS might block autoplay or another error occurred:', err);
       });
-      
+
       video.style.filter = 'grayscale(0%)';
       playBtn.style.display = 'none';
       pauseBtn.style.display = 'block';
 
-      // This is the new active video with sound
+      // Set as currently active (with sound)
       currentPlayingVideo = video;
     });
 
+    // When user clicks Pause
     pauseBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       video.pause();
-      // Optionally re-mute it so if user clicks play again, it is silent
-      // until they explicitly unmute:
-      video.muted = true; 
+      // Optionally re-mute upon pausing,
+      // so it doesn't blast sound if user hits Play again
+      video.muted = true;
       video.style.filter = 'grayscale(100%)';
+
       playBtn.style.display = 'block';
       pauseBtn.style.display = 'none';
 
