@@ -577,6 +577,26 @@ NAVIGATION STYLES
   background-color: #000;
 }
 
+.video-container .video-play-button,
+.video-container .video-pause-button {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);    /* semi-transparent */
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+.video-container .video-play-button {
+  display: none;
+}
 .video-container::after {
   content: "";
   position: absolute;

@@ -425,6 +425,7 @@ if (expandingVideo) {
       setTimeout(() => {
         loadingScreen.style.display = "none";
         document.body.classList.remove("no-scroll");
+        
         // Start background music
         window.startMusic();
       }, 1000);
@@ -444,4 +445,57 @@ if (expandingVideo) {
     endLoadingScreen(true);
     clearInterval(checkLoadInterval);
   }, 22000);
+
+
+
+  const playBtn   = document.querySelector('.video-play-button');
+  const pauseBtn  = document.querySelector('.video-pause-button');
+
+  // 1) AUTOPLAY WITH SOUND ON OPEN
+  heroVideo.muted  = false;
+  heroVideo.volume = 1.0;
+  heroVideo.play().catch(err => {
+    console.warn("Autoplay with sound blocked:", err);
+    // fallback: show play button only
+  });
+
+  // 2) SYNC BUTTON VISIBILITY
+  function syncPlayPauseButtons() {
+    if (heroVideo.paused) {
+      playBtn.style.display  = 'flex';
+      pauseBtn.style.display = 'none';
+    } else {
+      playBtn.style.display  = 'none';
+      pauseBtn.style.display = 'flex';
+    }
+  }
+
+  // 3) PLAY CLICK:  
+  //    - if it's the first time (or ended), go to 0 s  
+  //    - otherwise resume from currentTime  
+  playBtn.addEventListener('click', () => {
+    const atStart = heroVideo.currentTime < 0.5 || heroVideo.ended;
+    if (atStart) {
+      heroVideo.currentTime = 0;
+    }
+    heroVideo.muted  = false;
+    heroVideo.volume = 1.0;
+    heroVideo.play();
+    syncPlayPauseButtons();
+  });
+
+  // 4) PAUSE CLICK: just pause (leave volume intact)
+  pauseBtn.addEventListener('click', () => {
+    heroVideo.pause();
+    syncPlayPauseButtons();
+  });
+
+  // 5) KEEP IN SYNC if user interacts natively
+  heroVideo.addEventListener('play',  syncPlayPauseButtons);
+  heroVideo.addEventListener('pause', syncPlayPauseButtons);
+
+  // INIT
+  syncPlayPauseButtons();
+
+  // … the rest of your code (loading screen teardown, etc.) …
 });
