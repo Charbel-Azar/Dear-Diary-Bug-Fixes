@@ -439,5 +439,5 @@ window.startMusic = function () {
   setTimeout(() => {
     endLoadingScreen(true);
     clearInterval(checkLoadInterval);
-  }, 30000);
+  }, 22000);
 });

@@ -419,5 +419,5 @@ class MusicController {
   setTimeout(() => {
     endLoadingScreen(true);
     clearInterval(checkLoadInterval);
-  }, 15000);
+  }, 22000);
 });

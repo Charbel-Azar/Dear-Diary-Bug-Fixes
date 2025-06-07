@@ -963,8 +963,7 @@ Dirty Secret
 .secret-section {
   /* overflow: hidden; */ /* <-- Remove this if you want the key floating outside */
   text-align: center;
-  padding-top: 10vh;
-  margin-top: -50vh;
+
   position: relative;
 }
 
@@ -1441,11 +1440,14 @@ Dirty Secret
   position: relative;
   overflow: hidden; /* Prevent videos from overflowing */
   border-radius: 4vh; /* Add rounded corners */
+    /* NEW ↓ — 0.2 s fade-in / fade-out for the glow */
+  transition:box-shadow .2s ease-in-out;
+
 }
 
 .comparison-wrapper.active {
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.8),
-    0 0 60px rgba(255, 255, 255, 0.6), 0 0 90px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6), 0 0 90px rgba(255, 255, 255, 0.4);
 }
 
 /* Unified styling for both before/after videos */

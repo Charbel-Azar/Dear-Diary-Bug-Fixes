@@ -274,7 +274,6 @@ window.startMusic = function () {
   
   // Flags to track each video load status
   let heroLoaded = false;
-  let expandingLoaded = false;
 
   // Listen for when the hero video is ready
   heroVideo.addEventListener("canplaythrough", () => {
@@ -282,12 +281,16 @@ window.startMusic = function () {
     checkVideosLoaded();
   });
 
-  // Listen for when the expanding video is ready
+ // 2. Treat “missing” as already loaded
+let expandingLoaded = !expandingVideo;
+
+// 3. Only add listeners if the element exists
+if (expandingVideo) {
   expandingVideo.addEventListener("canplaythrough", () => {
     expandingLoaded = true;
     checkVideosLoaded();
   });
-
+}
   // Check if both videos are loaded
   function checkVideosLoaded() {
     if (heroLoaded && expandingLoaded) {
@@ -440,5 +443,5 @@ window.startMusic = function () {
   setTimeout(() => {
     endLoadingScreen(true);
     clearInterval(checkLoadInterval);
-  }, 15000);
+  }, 22000);
 });
