@@ -447,20 +447,20 @@ if (expandingVideo) {
   }, 22000);
 
 
+const playBtn   = document.querySelector('.video-play-button');
+const pauseBtn  = document.querySelector('.video-pause-button');
 
-  const playBtn   = document.querySelector('.video-play-button');
-  const pauseBtn  = document.querySelector('.video-pause-button');
+// 1) AUTOPLAY MUTED ON PAGE LOAD (this will work with your HTML attributes)
+// The video will autoplay muted due to your HTML: autoplay muted loop
+// No need to call play() again here since it's already set in HTML
 
-  // 1) AUTOPLAY WITH SOUND ON OPEN
-  heroVideo.muted  = false;
-  heroVideo.volume = 1.0;
-  heroVideo.play().catch(err => {
-    console.warn("Autoplay with sound blocked:", err);
-    // fallback: show play button only
-  });
+// Track if this is the first "real" play (with sound)
+let hasPlayedWithSound = false;
 
-  // 2) SYNC BUTTON VISIBILITY
-  function syncPlayPauseButtons() {
+// 2) SYNC BUTTON VISIBILITY
+function syncPlayPauseButtons() {
+  // Only sync buttons after the first sound play
+  if (hasPlayedWithSound) {
     if (heroVideo.paused) {
       playBtn.style.display  = 'flex';
       pauseBtn.style.display = 'none';
@@ -469,33 +469,50 @@ if (expandingVideo) {
       pauseBtn.style.display = 'flex';
     }
   }
+}
 
-  // 3) PLAY CLICK:  
-  //    - if it's the first time (or ended), go to 0 s  
-  //    - otherwise resume from currentTime  
-  playBtn.addEventListener('click', () => {
-    const atStart = heroVideo.currentTime < 0.5 || heroVideo.ended;
-    if (atStart) {
-      heroVideo.currentTime = 0;
-    }
-    heroVideo.muted  = false;
+// 3) PLAY CLICK:  
+//    - First click: restart from beginning with sound and show pause button
+//    - Subsequent clicks: resume from current position with sound
+playBtn.addEventListener('click', () => {
+  if (!hasPlayedWithSound) {
+    // First time clicking play - restart from beginning with sound
+    heroVideo.currentTime = 0;
+    heroVideo.muted = false;
     heroVideo.volume = 1.0;
-    heroVideo.play();
-    syncPlayPauseButtons();
-  });
-
-  // 4) PAUSE CLICK: just pause (leave volume intact)
-  pauseBtn.addEventListener('click', () => {
-    heroVideo.pause();
-    syncPlayPauseButtons();
-  });
-
-  // 5) KEEP IN SYNC if user interacts natively
-  heroVideo.addEventListener('play',  syncPlayPauseButtons);
-  heroVideo.addEventListener('pause', syncPlayPauseButtons);
-
-  // INIT
+    hasPlayedWithSound = true;
+    
+    // Show pause button immediately after first play
+    playBtn.style.display = 'none';
+    pauseBtn.style.display = 'flex';
+  } else {
+    // Subsequent clicks - just resume with sound
+    heroVideo.muted = false;
+    heroVideo.volume = 1.0;
+  }
+  
+  heroVideo.play();
   syncPlayPauseButtons();
+});
 
+// 4) PAUSE CLICK: just pause (leave volume intact)
+pauseBtn.addEventListener('click', () => {
+  heroVideo.pause();
+  syncPlayPauseButtons();
+});
+
+// 5) KEEP IN SYNC if user interacts natively
+heroVideo.addEventListener('play', syncPlayPauseButtons);
+heroVideo.addEventListener('pause', syncPlayPauseButtons);
+
+// 6) Handle video end - reset the flag so next play starts from beginning
+heroVideo.addEventListener('ended', () => {
+  hasPlayedWithSound = false;
+  syncPlayPauseButtons();
+});
+
+// INIT - Always show play button initially, even though video is autoplaying muted
+playBtn.style.display = 'flex';
+pauseBtn.style.display = 'none';
   // … the rest of your code (loading screen teardown, etc.) …
 });
