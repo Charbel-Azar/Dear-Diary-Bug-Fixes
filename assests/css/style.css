@@ -685,41 +685,33 @@ NAVIGATION STYLES
 }
 
 .notebook-section {
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  min-height: 100svh;
+  min-height: 120vh;
+  min-height: 120svh;
+  margin-top: 20vh;
   background: #000000;
-  overflow: hidden;
-}
-
-.notebook-section.fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  height: 100svh;
-  z-index: 100;
 }
 
 .notebook {
-  position: relative;
+  position: sticky;
+  top: 50vh;
   width: 15vh;
   height: 25vh;
   transform-style: preserve-3d;
-  perspective: 1500px;
   transition: transform 0.3s ease-out;
+  transform: translateY(-50%) perspective(1500px);
+  perspective: 1500px;
 }
 
-.notebook-section.fixed .notebook {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) perspective(1500px);
+@media (max-width: 768px) {
+  .notebook-section {
+    min-height: 140vh;
+    min-height: 140svh;
+    margin-top: 10vh;
+  }
 }
 
 @media (min-width: 768px) {
@@ -846,7 +838,13 @@ NAVIGATION STYLES
 
 /* Make this large enough that scrolling triggers flips */
 .scroll-spacer {
-  height: 10vh;
+  height: 1000vh;
+}
+
+@media (max-width: 768px) {
+  .scroll-spacer {
+    height: 1200vh;
+  }
 }
 
 /* Responsive heading */
