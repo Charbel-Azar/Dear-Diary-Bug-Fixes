@@ -269,7 +269,20 @@ class MusicController {
   const mainContent = document.getElementById("main-content");
 
   let isFullyLoaded = false;
-  let isVideoLoaded = true;
+  let isVideoLoaded = false;
+
+  if (loadingVideo) {
+    if (loadingVideo.readyState >= 3) {
+      isVideoLoaded = true;
+    } else {
+      loadingVideo.addEventListener("canplaythrough", () => {
+        isVideoLoaded = true;
+      });
+    }
+  } else {
+    // No loading video element; consider video loaded
+    isVideoLoaded = true;
+  }
 
   // Full page load
   window.addEventListener("load", () => {
