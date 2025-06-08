@@ -276,17 +276,31 @@ window.startMusic = function () {
   let heroLoaded = false;
   let expandingLoaded = false;
 
-  // Listen for when the hero video is ready
-  heroVideo.addEventListener("canplaythrough", () => {
+  if (heroVideo) {
+    if (heroVideo.readyState >= 3) {
+      heroLoaded = true;
+    } else {
+      heroVideo.addEventListener("canplaythrough", () => {
+        heroLoaded = true;
+        checkVideosLoaded();
+      });
+    }
+  } else {
     heroLoaded = true;
-    checkVideosLoaded();
-  });
+  }
 
-  // Listen for when the expanding video is ready
-  expandingVideo.addEventListener("canplaythrough", () => {
+  if (expandingVideo) {
+    if (expandingVideo.readyState >= 3) {
+      expandingLoaded = true;
+    } else {
+      expandingVideo.addEventListener("canplaythrough", () => {
+        expandingLoaded = true;
+        checkVideosLoaded();
+      });
+    }
+  } else {
     expandingLoaded = true;
-    checkVideosLoaded();
-  });
+  }
 
   // Check if both videos are loaded
   function checkVideosLoaded() {

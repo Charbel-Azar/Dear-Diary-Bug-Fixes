@@ -275,22 +275,33 @@ window.startMusic = function () {
   // Flags to track each video load status
   let heroLoaded = false;
 
-  // Listen for when the hero video is ready
-  heroVideo.addEventListener("canplaythrough", () => {
+  if (heroVideo) {
+    if (heroVideo.readyState >= 3) {
+      heroLoaded = true;
+    } else {
+      heroVideo.addEventListener("canplaythrough", () => {
+        heroLoaded = true;
+        checkVideosLoaded();
+      });
+    }
+  } else {
     heroLoaded = true;
-    checkVideosLoaded();
-  });
+  }
 
- // 2. Treat “missing” as already loaded
-let expandingLoaded = !expandingVideo;
+  // 2. Treat "missing" as already loaded
+  let expandingLoaded = !expandingVideo;
 
-// 3. Only add listeners if the element exists
-if (expandingVideo) {
-  expandingVideo.addEventListener("canplaythrough", () => {
-    expandingLoaded = true;
-    checkVideosLoaded();
-  });
-}
+  // 3. Only add listeners if the element exists
+  if (expandingVideo) {
+    if (expandingVideo.readyState >= 3) {
+      expandingLoaded = true;
+    } else {
+      expandingVideo.addEventListener("canplaythrough", () => {
+        expandingLoaded = true;
+        checkVideosLoaded();
+      });
+    }
+  }
   // Check if both videos are loaded
   function checkVideosLoaded() {
     if (heroLoaded && expandingLoaded) {
