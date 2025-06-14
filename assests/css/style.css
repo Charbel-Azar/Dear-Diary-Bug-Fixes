@@ -2779,7 +2779,8 @@ Dirty Secret
   height: 55vh;
   background: #333;
   border-radius: 3vh;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Remove transition so cards follow scroll speed */
+  transition: none;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
@@ -2815,7 +2816,8 @@ Dirty Secret
   font-family: "Syne";
   opacity: 0;
   transform: scale(0.5);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Remove transition to sync with scroll */
+  transition: none;
   white-space: nowrap;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   z-index: 10;
