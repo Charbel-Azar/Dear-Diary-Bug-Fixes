@@ -12,14 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Video & poster sources
   const videoSources = [
     'assests/images/cube/pint (1).mp4',
-    'assests/images/cube/pint (2).mp4',
-    'assests/images/cube/pint (3).mp4',
-    'assests/images/cube/pint (4).mp4',
-    'assests/images/cube/pint (5).mp4',
-    'assests/images/cube/pint (6).mp4',
-    'assests/images/cube/pint (7).mp4',
-    'assests/images/cube/pint (8).mp4',
-    'assests/images/cube/pint (9).mp4'
+    'assests/images/cube/pint (2).webm',
+    'assests/images/cube/pint (3).webm',
+    'assests/images/cube/pint (4).webm',
+    'assests/images/cube/pint (5).webm',
+    'assests/images/cube/pint (6).webm',
+    'assests/images/cube/pint (7).webm',
+    'assests/images/cube/pint (8).webm',
+    'assests/images/cube/pint (9).webm'
   ];
 
   const posterSources = [
