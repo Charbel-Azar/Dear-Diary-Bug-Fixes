@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /****************************************
    * Create the 3x3 grid of video cells
    ****************************************/
+  const loadPromises = [];
   for (let row = 1; row <= gridSize; row++) {
     for (let col = 1; col <= gridSize; col++) {
       const cell = document.createElement('div');
@@ -55,6 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
       video.setAttribute('autoplay', '');    // allow silent autoplay
       video.setAttribute('loop', '');
       video.setAttribute('preload', 'auto');
+      const loadPromise = new Promise(resolve => {
+        if (video.readyState >= 3) {
+          resolve();
+        } else {
+          video.addEventListener('loadeddata', resolve, { once: true });
+        }
+      });
+      loadPromises.push(loadPromise);
       videoIndex++;
 
       // Create overlay with play/pause buttons
@@ -87,6 +96,10 @@ document.addEventListener('DOMContentLoaded', () => {
       videoGrid.appendChild(cell);
     }
   }
+
+  Promise.all(loadPromises).then(() => {
+    document.dispatchEvent(new Event('cubeVideosLoaded'));
+  });
 
   /****************************************
    * GRID EXPANSION & HOVER EFFECTS

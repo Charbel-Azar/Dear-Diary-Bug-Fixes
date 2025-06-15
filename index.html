@@ -361,10 +361,9 @@
           class="video-container"
           style="position: relative; overflow: hidden"
         >
-          <video class="hero-video" autoplay muted loop playsinline preload="auto" title="Dear Diary Media Introduction Video"
-          aria-label="A short intro about Dear Diary Media, showcasing our storytelling approach.">
-         >
-            <source src="./assests/images/camera/intro.mp4" type="video/mp4" />
+          <video class="hero-video" autoplay muted loop playsinline preload="none" title="Dear Diary Media Introduction Video"
+          aria-label="A short intro about Dear Diary Media, showcasing our storytelling approach."
+          data-src-mp4="./assests/images/camera/intro.mp4">
             Your browser does not support the video tag.
           </video>
            <!-- Add these two buttons -->
@@ -517,12 +516,10 @@
             loop
             muted
             playsinline
-            preload="auto"
+            preload="none"
+            data-src-webm="./assests/images/secrets/Secrets.webm"
+            data-src-mp4="./assests/images/secrets/secrets.mp4"
           >
-            <source
-              src="./assests/images/secrets/Secrets.webm"
-              type="video/mp4"
-            />
             Your browser does not support the video tag.
           </video>
         </div>
@@ -1213,17 +1210,18 @@
     </main>
 
     <!-- SCRIPTS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="./assests/js/loadingindex.js"></script>
-    <script src="./assests/js/main.js"></script>
-    <script src="./assests/js/book.js"></script>
-    <script src="./assests/js/circlevideo.js"></script>
-    <script src="./assests/js/cubesvideos.js"></script>
-    <script src="./assests/js/secret.js"></script>
-    <script src="./assests/js/beforeafter.js"></script>
-    <script src="./assests/js/envelope.js"></script>
-    <script src="./assests/js/dust.js"></script>
-    <script src="./assests/js/pauseHandler.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+    <script src="./assests/js/loadingindex.js" defer></script>
+    <script src="./assests/js/main.js" defer></script>
+    <script src="./assests/js/book.js" defer></script>
+    <script src="./assests/js/circlevideo.js" defer></script>
+    <script src="./assests/js/cubesvideos.js" defer></script>
+    <script src="./assests/js/secret.js" defer></script>
+    <script src="./assests/js/beforeafter.js" defer></script>
+    <script src="./assests/js/envelope.js" defer></script>
+    <script src="./assests/js/dust.js" defer></script>
+    <script src="./assests/js/pauseHandler.js" defer></script>
+    <script src="./assests/js/videoLoader.js" defer></script>
     <script>
       window.addEventListener('scroll', function() {
         const arrow = document.querySelector('.scroll-arrow');
