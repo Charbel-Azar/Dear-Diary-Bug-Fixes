@@ -92,8 +92,6 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preload" as="video" href="assests/images/camera/intro.mp4" />
     <!-- Preload the loading screen video -->
     <link
       rel="preload"
@@ -256,7 +254,7 @@
       <div class="nav-container">
         <div class="logo">
           <a href="index.html">
-            <img
+            <img loading="lazy"
               src="./assests/images/logo/white_transparent_logo.png"
               alt="Dear Diary Media Logo"
               title="Dear Diary Media Logo"
@@ -276,7 +274,7 @@
           <a href="https://www.instagram.com/deardiary.media" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
           <a href="https://www.facebook.com/people/Dear-Diary-Media/61572525600344/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
           <a href="https://calendly.com/deardiaryagency/30min" aria-label="Appointment" target="_blank">
-            <img
+            <img loading="lazy"
               style="width: 3.5vh !important"
               src="./assests/images/camera/sexy (1).png"
               alt="Sexy"
@@ -317,7 +315,7 @@
       ><i class="fab fa-facebook"></i
     ></a>
     <a href="https://calendly.com/deardiaryagency/30min" aria-label="Appointment" target="_blank">
-      <img
+      <img loading="lazy"
         style="width: 3.5vh !important"
         src="./assests/images/camera/sexy (1).png"
         alt="Sexy"
@@ -394,7 +392,7 @@
                   onclick="this.classList.toggle('active'); this.closest('.notebook').classList.toggle('tilted');"
                 >
                   <div class="page-front">
-                    <img
+                    <img loading="lazy"
                       src="./assests/images/logo/black_transparent_logo.png"
                       alt="Notebook Cover"
                       title="Notebook Cover"
@@ -487,7 +485,7 @@
                     <div class="page-content">To Be Continued...</div>
                   </div>
                   <div class="page-back">
-                    <img
+                    <img loading="lazy"
                       src="./assests/images/logo/black_transparent_logo.png"
                       alt="Back Cover"
                       class="cover-image"
@@ -585,11 +583,11 @@
                <!-- First Comparison – website redesign -->
 <div class="image-container">
   <div class="comparison-wrapper">
-    <img src="./assests/images/beforeafter/After1.png"
+    <img loading="lazy" src="./assests/images/beforeafter/After1.png"
          class="after-video"   <!-- keep class so the JS still works -->
          alt="Website – after redesign">
 
-    <img src="./assests/images/beforeafter/Before1.png"
+    <img loading="lazy" src="./assests/images/beforeafter/Before1.png"
          class="before-video"
          alt="Website – before redesign">
 
@@ -601,11 +599,11 @@
 <!-- Second Comparison – cinematic colour / grade -->
 <div class="image-container">
   <div class="comparison-wrapper">
-    <img src="./assests/images/beforeafter/After3.png"
+    <img loading="lazy" src="./assests/images/beforeafter/After3.png"
          class="after-video"
          alt="Cinematic shot – graded">
 
-    <img src="./assests/images/beforeafter/Before3.png"
+    <img loading="lazy" src="./assests/images/beforeafter/Before3.png"
          class="before-video"
          alt="Cinematic shot – raw">
 
@@ -617,11 +615,11 @@
 <!-- Third Comparison – product colour-grading -->
 <div class="image-container">
   <div class="comparison-wrapper">
-    <img src="./assests/images/beforeafter/After4.png"
+    <img loading="lazy" src="./assests/images/beforeafter/After4.png"
          class="after-video"
          alt="Product photo – colour-graded">
 
-    <img src="./assests/images/beforeafter/Before4.png"
+    <img loading="lazy" src="./assests/images/beforeafter/Before4.png"
          class="before-video"
          alt="Product photo – ungraded">
 
@@ -1213,17 +1211,17 @@
     </main>
 
     <!-- SCRIPTS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="./assests/js/loadingindex.js"></script>
-    <script src="./assests/js/main.js"></script>
-    <script src="./assests/js/book.js"></script>
-    <script src="./assests/js/circlevideo.js"></script>
-    <script src="./assests/js/cubesvideos.js"></script>
-    <script src="./assests/js/secret.js"></script>
-    <script src="./assests/js/beforeafter.js"></script>
-    <script src="./assests/js/envelope.js"></script>
-    <script src="./assests/js/dust.js"></script>
-    <script src="./assests/js/pauseHandler.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script defer src="./assests/js/loadingindex.js"></script>
+    <script defer src="./assests/js/main.js"></script>
+    <script defer src="./assests/js/book.js"></script>
+    <script defer src="./assests/js/circlevideo.js"></script>
+    <script defer src="./assests/js/cubesvideos.js"></script>
+    <script defer src="./assests/js/secret.js"></script>
+    <script defer src="./assests/js/beforeafter.js"></script>
+    <script defer src="./assests/js/envelope.js"></script>
+    <script defer src="./assests/js/dust.js"></script>
+    <script defer src="./assests/js/pauseHandler.js"></script>
     <script>
       window.addEventListener('scroll', function() {
         const arrow = document.querySelector('.scroll-arrow');
