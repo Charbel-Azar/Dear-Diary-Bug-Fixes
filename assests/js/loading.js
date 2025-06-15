@@ -272,6 +272,12 @@ class MusicController {
   let isVideoLoaded = false;
   let areCubeVideosLoaded = false;
 
+  const hasCubeGrid = document.querySelector('.video-grid');
+  if (!hasCubeGrid) {
+    // No cube videos on this page
+    areCubeVideosLoaded = true;
+  }
+
   if (loadingVideo) {
     if (loadingVideo.readyState >= 3) {
       isVideoLoaded = true;
@@ -285,9 +291,11 @@ class MusicController {
     isVideoLoaded = true;
   }
 
-  document.addEventListener('cubeVideosLoaded', () => {
-    areCubeVideosLoaded = true;
-  });
+  if (hasCubeGrid) {
+    document.addEventListener('cubeVideosLoaded', () => {
+      areCubeVideosLoaded = true;
+    });
+  }
 
   // Full page load
   window.addEventListener("load", () => {
