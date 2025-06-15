@@ -270,6 +270,7 @@ class MusicController {
 
   let isFullyLoaded = false;
   let isVideoLoaded = false;
+  let areCubeVideosLoaded = false;
 
   if (loadingVideo) {
     if (loadingVideo.readyState >= 3) {
@@ -283,6 +284,10 @@ class MusicController {
     // No loading video element; consider video loaded
     isVideoLoaded = true;
   }
+
+  document.addEventListener('cubeVideosLoaded', () => {
+    areCubeVideosLoaded = true;
+  });
 
   // Full page load
   window.addEventListener("load", () => {
@@ -405,8 +410,8 @@ class MusicController {
   // ========================================================
 
   function endLoadingScreen(isFallback = false) {
-    if (!isVideoLoaded && !isFallback) {
-      console.log("Waiting for loading video to be ready...");
+    if ((!isVideoLoaded || !areCubeVideosLoaded) && !isFallback) {
+      console.log("Waiting for videos to be ready...");
       return;
     }
     setTimeout(() => {
@@ -422,7 +427,7 @@ class MusicController {
   }
 
   const checkLoadInterval = setInterval(() => {
-    if (isFullyLoaded && isVideoLoaded) {
+    if (isFullyLoaded && isVideoLoaded && areCubeVideosLoaded) {
       endLoadingScreen();
       clearInterval(checkLoadInterval);
     }
