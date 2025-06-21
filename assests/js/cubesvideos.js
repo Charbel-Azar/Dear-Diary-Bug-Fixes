@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Video & poster sources
   const videoSources = [
     'assests/images/cube/pint (1).mp4',
-    'assests/images/cube/pint (2).webm',
-    'assests/images/cube/Pint (3).webm',
+    'assests/images/cube/Pint (2).webm',
+    'assests/images/cube/pint (3).webm',
     'assests/images/cube/Pint (4).webm',
     'assests/images/cube/Pint (5).webm',
     'assests/images/cube/Pint (6).webm',
