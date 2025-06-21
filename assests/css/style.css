@@ -1017,14 +1017,19 @@ Dirty Secret
 }
 
 .videosecret-container {
-  max-width: 40vh; /* Adjust as needed */
-  margin: 0 auto; /* Center the container */
-  margin-bottom: 4vh; /* Same spacing as before */
-  text-align: center; /* If you want it centered in text context */
+  /*
+    Use the smaller value between viewport width and height
+    so the video scales nicely on ultra-wide screens.
+  */
+  width: min(90vw, 40vh);
+  margin: 0 auto;
+  margin-bottom: 4vh;
+  text-align: center;
 }
 
 .secret-video {
   width: 100%;
+  height: auto;
   border-radius: 10px; /* Rounded corners */
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
   /* Or try a white border plus shadow:
