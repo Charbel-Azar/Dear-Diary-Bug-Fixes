@@ -21,6 +21,19 @@
         }
 
         video.load();
+
+        // Prime the first frame so there's no grey flash when it becomes visible
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              video.pause();
+              video.currentTime = 0;
+            })
+            .catch(() => {
+              // Autoplay might be blocked; just ignore and rely on user scroll to play
+            });
+        }
       });
   };
 
