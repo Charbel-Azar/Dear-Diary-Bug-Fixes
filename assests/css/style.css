@@ -692,7 +692,7 @@ NAVIGATION STYLES
 
 .story-heading {
   font-family: var(--heading-font, Arial);
-  font-size: 4rem;
+  font-size: 4vh;
   color: #fff;
   margin-bottom: 3rem;
   transition: all 0.3s ease;
@@ -717,7 +717,7 @@ NAVIGATION STYLES
   align-items: center;
   min-height: 60vh;
   margin-top: 40vh;
-  background: #000000;
+
 }
 
 .notebook {
